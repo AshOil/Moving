@@ -1,15 +1,12 @@
 <template>
   <div>
     <h1>Login</h1>
-    <div>
-      <label for="username">아이디 : </label>
-      <input type="text" id="username" v-model="credentials.username">
-    </div>
-    <div>
-      <label for="password">비밀번호 : </label>
-      <input type="password" id="password" v-model="credentials.password" @keypress.enter="login(credentials)">
-    </div>
-    <button @click="login(credentials)">로그인</button>
+    <label for="username"></label>
+    <input type="text" id="username" v-model="credentials.username" placeholder="Your email" class="form-control">
+    <label for="password"></label>
+    <input type="password" id="password" v-model="credentials.password" @keypress.enter="login(credentials)" placeholder="Your password" class="form-control">
+    <br />
+    <b-button @click="login(credentials)">LogIn</b-button>
   </div>
 </template>
 
@@ -42,5 +39,14 @@ export default {
 </script>
 
 <style>
+:hover{
+  cursor: pointer;
+}
+.box {
+  width: 25%;
+  position: absolute;
+  left: 15rem;
+  top: 15rem;    
+  }
 
 </style>
