@@ -1,9 +1,9 @@
 <template>
-  <div>
-    <div class="container">
+  <div class="back">
+    <!-- <div class="back" >
       <img src="https://i.ytimg.com/vi/P0lUx_CDVgE/maxresdefault.jpg" alt="배경" id="photo">
-    </div>
-    <div>
+    </div> -->
+    <div style="z-index: 99999990;">
       <Signup />
     </div>
   </div>
@@ -23,20 +23,14 @@ export default {
 
 <style>
 
-/* #photo {
-max-width: 100%;
-max-height: 100%;
-bottom: 100px;
-left: 0; */
-/* overflow: auto;
-position: fixed;
-right: 0;
-top: 100px;
-} */
 #photo{
 position: absolute; top:0; left: 0;
 width: 100%;
 height: 100%;
+}
+.back {
+  background-image: url( "https://i.ytimg.com/vi/P0lUx_CDVgE/maxresdefault.jpg" );
+  height: 100vh;
 }
 
 </style>
