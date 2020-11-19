@@ -1,16 +1,21 @@
 <template>
   <div>
-    Main home
-    <button @click="gotoDetail">detail</button>
+    <MovieSpin />
   </div>
 </template>
 
 <script>
 import axios from 'axios'
+import MovieSpin from '../../components/movieComponents/MovieSpin.vue'
+
+
 export default {
   name: 'Main',
+  components: {
+    MovieSpin
+  },
   methods: {
-    gotoDetail() {
+    goToDetail() {
       axios.get('http://127.0.0.1:8000/articles/')
         .then(res => {
           console.log(res.data)
@@ -18,7 +23,7 @@ export default {
         .catch(err => {
           console.log(err)
         })
-    }
+    },
   }
 }
 </script>
