@@ -34,7 +34,7 @@ export default {
           console.log(res.data)
           localStorage.setItem('jwt', res.data.token)
           this.$emit('login')
-          this.$router.push({name:'TodoList'})
+          this.$router.push({name:'Main'})
         })
     }
   }

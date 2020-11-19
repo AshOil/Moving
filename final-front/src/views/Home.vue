@@ -1,13 +1,13 @@
 <template>
-  <div class="home thumbnail-wrapper">
-    <b-row align-v="center">
-        <b-col>
-          <img src="https://img.hankyung.com/photo/201911/01.21061377.1.jpg" alt="배경" id="photo" class="w-75 p-3 h-100">
-        </b-col>
-         <Signup />
-
-    </b-row>
+  <div>
+    <div class="container">
+      <img src="https://i.ytimg.com/vi/P0lUx_CDVgE/maxresdefault.jpg" alt="배경" id="photo">
+    </div>
+    <div>
+      <Signup />
+    </div>
   </div>
+ 
 </template>
 
 <script>
@@ -23,8 +23,20 @@ export default {
 
 <style>
 
-#photo {
-  max-width: 100%; height: auto;
+/* #photo {
+max-width: 100%;
+max-height: 100%;
+bottom: 100px;
+left: 0; */
+/* overflow: auto;
+position: fixed;
+right: 0;
+top: 100px;
+} */
+#photo{
+position: absolute; top:0; left: 0;
+width: 100%;
+height: 100%;
 }
 
 </style>

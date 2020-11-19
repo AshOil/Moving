@@ -1,13 +1,9 @@
 <template>
     <div id="app">
-    <div id="nav">
-      <span v-if="login">
-        <router-link to="/">Home</router-link> |
-        <router-link @click.native="logout" to="#">LogOut</router-link>
-      </span>
-      
-
-    </div>
+    <span v-if="login">
+      <router-link to="/main">Main</router-link> |
+      <router-link @click.native="logout" to="#">LogOut</router-link>
+    </span>
     <router-view @login="login = true" />
   </div>
 </template>
@@ -25,7 +21,7 @@ export default {
       console.log('logout')
       this.login =false
       localStorage.removeItem('jwt')
-      this.$router.push({name: 'Login' })
+      this.$router.push({name: 'Home' })
     }
   },
   created() {
@@ -47,6 +43,7 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
+  height: 100vh;
 }
 
 #nav {
