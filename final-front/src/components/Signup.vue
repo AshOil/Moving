@@ -1,20 +1,15 @@
 <template>
   <div>
     <h1>Sign Up</h1>
-    <div>
-      <label for="username">아이디: </label>
-      <input type="text" id="username" v-model="credentials.username">
-    </div>
-    <div>
-      <label for="password">비밀번호: </label>
-      <input type="password" id="password" v-model="credentials.password">
-    </div>
-    <div>
-      <label for="passwordConfirmation">비밀번호 확인: </label>
-      <input type="password" id="passwordConfirmation" v-model="credentials.passwordConfirmation" 
-      @keypress.enter="signup(credentials)">
-    </div>
-    <button @click="signup(credentials)">회원가입</button>
+    <label for="username"></label>
+    <input type="email" id="username" v-model="credentials.username" class="form-control" placeholder="Your email" />
+    <label for="password"></label>
+    <input type="password" id="password" v-model="credentials.password" class="form-control" placeholder="Your password"/>
+    <label for="passwordConfirmation"></label>
+    <input type="password" id="passwordConfirmation" v-model="credentials.passwordConfirmation" 
+    @keypress.enter="signup(credentials)" class="form-control" placeholder="Check your password one more"/>
+    <br>
+    <b-button @click="signup(credentials)">Sign-Up</b-button>
   </div>
 </template>
 
@@ -23,6 +18,7 @@ import axios from 'axios'
 
 export default {
   name: 'Signup',
+
   data() {
     return {
       credentials: {
@@ -42,9 +38,10 @@ export default {
       if (password === passwordConfirmation) {
         axios.post('http://127.0.0.1:8000/accounts/signup/', userData)
           .then(() => {
+            console.log('회원가입')
             // console.log('signup')
             // 회원가입 정상 진행(server)
-            this.$router.push({ name:'Login'})
+            this.$router.go(this.$router.currentRoute)
         })
       } else {
         alert('작성된 비밀번호가 다릅니다.')
@@ -56,5 +53,19 @@ export default {
 </script>
 
 <style>
+
+:hover{
+  cursor: pointer;
+}
+  .box {
+    width: 25%;
+    position: absolute;
+    left: 15rem;
+    top: 15rem;
+    
+  }
+
+
+
 
 </style>

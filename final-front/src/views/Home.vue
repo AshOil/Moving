@@ -1,13 +1,18 @@
 <template>
   <div class="back">
-    <div>
-      <Signup />
-    </div>
-    <div>
-      <Login />
-    </div>
+    <form class="box">
+      <b-tabs content-class="mt-3" lazy >
+        <b-tab title="Login">
+          <br>
+          <Login />
+        </b-tab>
+        <b-tab title="Sign Up">
+          <Signup/>
+        </b-tab>
+      </b-tabs>
+    </form>
   </div>
- 
+
 </template>
 
 <script>
@@ -16,10 +21,16 @@ import Login from '../components/Login.vue'
 
 export default {
   name: 'Home',
+  data() {
+    return {
+      check: false
+    }
+  }, 
   components: {
     Signup,
     Login
-  }
+  },
+
 }
 </script>
 
@@ -30,5 +41,13 @@ export default {
   background-size: cover;
   height: 100vh;
 }
+.box {
+    width: 25%;
+    position: relative;
+    top: 15%;
+    
+  }
+
+
 
 </style>
