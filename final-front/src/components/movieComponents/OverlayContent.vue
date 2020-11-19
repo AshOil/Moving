@@ -23,11 +23,15 @@ export default {
   name:"OverlayContent",
   props: {
     moviedata: {
-      type : Array
+      type : Object
     },
+  },
+  methods: {
 
+    }
   }
-}
+
+
 </script>
 
 <style>

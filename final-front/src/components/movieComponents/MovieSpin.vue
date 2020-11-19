@@ -22,8 +22,8 @@
             </div>
             </b-carousel>
           </b-card>
-          <template #overlay @click.prevent=true>
-            <div class="text-center"  >
+          <template #overlay>
+            <div class="text-center"  @click="goToDetail">
               <OverlayContent 
               :moviedata = moviedatas[slide]
               />
@@ -52,7 +52,7 @@ export default {
       moviedatas: null,
       slide: 0,
       sliding: null,
-      show: true,
+      show: false,
       
     }
   },
@@ -63,6 +63,12 @@ export default {
           console.log(res.data.results)
           this.moviedatas = res.data.results
         })
+    },
+    goToDetail() {
+      this.moviedata = this.moviedatas[this.slide]
+      console.log('이동하자!')
+      this.$store.dispatch('nowMovie',this.moviedata)
+      this.$router.push("MovieDetail")
     },
     onSlideStart() {
       this.sliding = true
@@ -82,7 +88,7 @@ export default {
     },
     clickCheck() {
       console.log('되나?')
-    }
+    },  
   },
   created() {
     this.getMovie()

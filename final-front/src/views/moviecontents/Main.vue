@@ -5,7 +5,6 @@
 </template>
 
 <script>
-import axios from 'axios'
 import MovieSpin from '../../components/movieComponents/MovieSpin.vue'
 
 
@@ -15,15 +14,7 @@ export default {
     MovieSpin
   },
   methods: {
-    goToDetail() {
-      axios.get('http://127.0.0.1:8000/articles/')
-        .then(res => {
-          console.log(res.data)
-        })
-        .catch(err => {
-          console.log(err)
-        })
-    },
+
   }
 }
 </script>
