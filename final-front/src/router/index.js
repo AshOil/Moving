@@ -4,8 +4,8 @@ import Home from '../views/Home.vue'
 import Signup from '../components/Signup.vue'
 import Login from '../components/Login.vue'
 import Main from '../views/moviecontents/Main.vue'
-import MovieDetail from '../views/moviecontents/MovieDetail'
-import Article from '../components/Article'
+import MovieDetail from '../views/moviecontents/MovieDetail.vue'
+import Article from '../components/Article.vue'
 
 Vue.use(VueRouter)
 
@@ -40,6 +40,7 @@ const routes = [
     name: 'Article',
     component: Article
   },
+
 ]
 
 const router = new VueRouter({

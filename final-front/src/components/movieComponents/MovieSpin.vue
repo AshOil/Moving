@@ -48,8 +48,8 @@ export default {
   data() {
     return {
       moviedata: null,
-      interval: 4000,
       moviedatas: null,
+      interval: 4000,
       slide: 0,
       sliding: null,
       show: false,

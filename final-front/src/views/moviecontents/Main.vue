@@ -1,17 +1,17 @@
 <template>
   <div>
-    <MovieSpin />
+    <MovieList />
   </div>
 </template>
 
 <script>
-import MovieSpin from '../../components/movieComponents/MovieSpin.vue'
+import MovieList from '../../components/movieComponents/MovieList.vue'
 
 
 export default {
   name: 'Main',
   components: {
-    MovieSpin
+    MovieList
   },
   methods: {
 
