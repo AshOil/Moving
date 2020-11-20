@@ -7,6 +7,7 @@ import Main from '../views/moviecontents/Main.vue'
 import MovieDetail from '../views/moviecontents/MovieDetail.vue'
 import Article from '../components/Article.vue'
 
+
 Vue.use(VueRouter)
 
 const routes = [
@@ -40,6 +41,7 @@ const routes = [
     name: 'Article',
     component: Article
   },
+
 
 ]
 
