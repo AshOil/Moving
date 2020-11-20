@@ -1,6 +1,7 @@
 <template>
-  <div @click="onClick">
-    <h1>{{ moviedata.title }}</h1>
+  <div>
+    <h1>{{ moviedata }}</h1>
+    <h1>{{ $store.state.movie }}</h1>
     <Article />
   </div>
 </template>
@@ -13,9 +14,10 @@ export default {
   name: 'MovieDetail',
   data() {
     return {
-      moviedata: this.movie
+      moviedata: null
     }
   },
+
   components: {
     Article,
   },
@@ -26,7 +28,7 @@ export default {
     ])
   },
   beforeCreated() {
-    // this.moviedata = this.movie
+    this.moviedata = this.movie
     this.$store.dispatch('emptyMovie')
     console.log(this.moviedata)
   }
