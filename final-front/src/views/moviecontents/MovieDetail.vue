@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h1>{{ moviedata[0].title}}</h1>
+    <h1>{{ moviedata[0].fields.title}}</h1>
     <Article />
   </div>
 </template>
