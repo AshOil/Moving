@@ -1,7 +1,6 @@
 <template>
   <div>
-    <h1>{{ moviedata }}</h1>
-    <h1>{{ $store.state.movie }}</h1>
+    <h1>{{ moviedata[0].title}}</h1>
     <Article />
   </div>
 </template>
@@ -14,23 +13,25 @@ export default {
   name: 'MovieDetail',
   data() {
     return {
-      moviedata: null
+      moviedata: this.movie
     }
   },
 
   components: {
     Article,
   },
-
   computed: {
     ...mapState([
       'movie'
     ])
   },
-  beforeCreated() {
+  created() {
     this.moviedata = this.movie
-    this.$store.dispatch('emptyMovie')
     console.log(this.moviedata)
+  },
+  destroyed() {
+    console.log("파괴!")
+    this.$store.dispatch('emptyMovie')
   }
 
 }
