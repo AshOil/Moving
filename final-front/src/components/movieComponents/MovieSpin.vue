@@ -1,6 +1,6 @@
 <template>
   <b-container >
-    <b-row align-h="center" >
+    <b-row >
       <b-carousel
         id="carousel-1"
         v-model="slide"
@@ -8,14 +8,13 @@
         controls
         indicators
         background="#ababab"
-        img-width="1024"
-        img-height="480"
+
         style="text-shadow: 1px 1px 2px #333;"
         @sliding-start="onSlideStart"
         @sliding-end="onSlideEnd"
       >
       <div ref="show"  v-for="(moviesuggest, idx) in moviesuggests" :key="idx">
-        <b-carousel-slide class="w-300 h-620" :img-src="`https://image.tmdb.org/t/p/original/${moviesuggest.poster_path}`"></b-carousel-slide>
+        <b-carousel-slide :img-src="`https://image.tmdb.org/t/p/original/${moviesuggest.poster_path}`"></b-carousel-slide>
       </div>
       </b-carousel>
     </b-row>
@@ -86,5 +85,9 @@ export default {
 </script>
 
 <style>
-
+#carousel-1 {
+  position: absolute; top:0; left: 0;
+  width: 100%;
+  height: 50%;
+}
 </style>
