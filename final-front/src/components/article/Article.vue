@@ -11,7 +11,9 @@
   <span>{{article.score}}</span>
   <br>
   <span>{{article.title}}</span>
-  <button @click="deleteArticle">x</button>
+  <b-icon icon="pencil-fill" @click="updateArticle" v-b-tooltip.hover.topright="'update'"></b-icon>
+  <b-icon icon="trash-fill" @click="deleteArticle" v-b-tooltip.hover.topright="'delete'"></b-icon>
+  <b-icon icon="chat-right-text-fill" v-b-tooltip.hover.topright="'Comments'"></b-icon>
 </div>
   
 </template>
