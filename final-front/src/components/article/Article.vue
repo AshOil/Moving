@@ -4,7 +4,7 @@
   id="rating-inline" 
   inline
   variant="warning"
-  :value="article.score"
+  :value="article.score/2"
   readonly
   ></b-form-rating>
   <br>
@@ -37,7 +37,7 @@ export default {
     },
     deleteArticle() {
       const config = this.setToken()
-      axios.delete(`http://127.0.0.1:8000/articles/${this.article.id}/`,config)
+      axios.delete(`http://127.0.0.1:8000/moviedata/articles/${this.article.id}/`,config)
       .then(res => {
         console.log(res)
         this.$emit('delete-article',res.data.id)
@@ -48,7 +48,7 @@ export default {
       const articleItem = {
         title: this.article.title,
       }
-      axios.put(`http://127.0.0.1:8000/article/${this.article.id}/`, articleItem, config)
+      axios.put(`http://127.0.0.1:8000/moviedata/articles/${this.article.id}/`, articleItem, config)
         .then(res => {
           console.log(res.data)
           // this.$emit('update-todo', this.todo)

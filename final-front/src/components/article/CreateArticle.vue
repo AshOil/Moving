@@ -38,7 +38,7 @@ export default {
         title: this.title,
         score: this.score*2
       }
-      axios.post('http://127.0.0.1:8000/articles/', articleItem, config)
+      axios.post('http://127.0.0.1:8000/moviedata/articles/', articleItem, config)
         .then(res => {
           console.log(res.data)
           // 반응형 변경!!

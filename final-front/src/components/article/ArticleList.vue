@@ -48,7 +48,7 @@ export default {
       
       // Article List 가져와
       const config = this.setToken()
-      axios.get('http://127.0.0.1:8000/articles/',config)
+      axios.get('http://127.0.0.1:8000/moviedata/articles/',config)
       .then(res => {
         console.log(res.data)
         this.articles = res.data
