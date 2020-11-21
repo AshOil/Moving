@@ -79,7 +79,7 @@
 </template>
 
 <script>
-import Article from '../../components/Article.vue'
+import ArticleList from '../../components/article/ArticleList'
 import {mapState} from 'vuex'
 
 export default {
@@ -91,7 +91,7 @@ export default {
   },
 
   components: {
-    Article,
+    ArticleList,
   },
   computed: {
     ...mapState([

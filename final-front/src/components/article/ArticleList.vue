@@ -1,32 +1,37 @@
 <template>
   <div>
-    <p>article</p>
-    <div>
-      <span>
-        <label for="rating-inline" style="margin-right: 10px">Score</label>
-        <b-form-rating id="rating-inline" inline v-model="value" ></b-form-rating>
-        <p>{{value*2}}</p>
-      </span>
-      <span>
-      <label for="title"></label>
-      <input type="text" id="title" placeholder="Wirte your opinion about Movie" >
-      </span>
-    </div>
+    <p>사용자 평점: {{}}</p>
+    <p>전문가 평점: </p>
+    <p>한줄평</p>
+    <hr>
+    <CreateArticle 
+      @create-input = createdArticles
+    />
+    <Article
+      v-for="article in articles" :key='article.id' 
+      :article=article
+      @delete-article = deleteArticle
+      @update-article = updateArticle
+    />
   </div>
 </template>
 
 <script>
 import axios from 'axios'
+
+import CreateArticle from '@/components/article/CreateArticle'
+import Article from '@/components/article/Article'
+
 export default {
-  name: 'Article',
+  name: 'ArticleList',
+  components: {
+    CreateArticle,
+    Article
+  },
   data() {
     return {
       value: null,
-      aritlces: null
-      // articles:{
-      //   title: '',
-      //   score: ''
-      // }
+      articles: null
     }
   },
   methods: {
@@ -46,7 +51,7 @@ export default {
       axios.get('http://127.0.0.1:8000/articles/',config)
       .then(res => {
         console.log(res.data)
-        this.todos = res.data
+        this.articles = res.data
       })
       .catch(err => {
         console.log(err)
@@ -59,8 +64,6 @@ export default {
       this.articles = this.articles.filter(article => {
         return article.id !== articleId
       })
-
-
     },
     updateArticle(article) {
       console.log(article)
