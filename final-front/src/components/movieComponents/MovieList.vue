@@ -2,8 +2,7 @@
   <div>
     <div class="container">
       <div class=" w-100">
-        <b-overlay :show="show"  @click="clickPossible"> 
-          <b-card :aria-hidden="show ? 'true' : null">
+        <b-overlay :show="show" @click="clickPossible"> 
             <stack
               :column-min-width="150"
               :gutter-width="15"
@@ -15,24 +14,26 @@
                 :key="idx"
                 style="transition: transform 300ms"
               >
-                <div style="width=100% height=100%" v-if="moviedata.fields.vote_average >= 9">
-                  <img @click="clickImage(moviedata)" class="large" :src="`https://image.tmdb.org/t/p/original/${moviedata.fields.poster_path}`" alt="">
+                <div style="width=100% height=100%" v-if="moviedata.vote_average >= 9">
+                  <img @click="clickImage(moviedata)" class="large" :src="`https://image.tmdb.org/t/p/original/${moviedata.poster_path}`" alt="">
                 </div>
-                <div  style="width=100% height=100%" v-else-if="moviedata.fields.vote_average >= 7">
-                  <img @click="clickImage(moviedata)" class="medium" :src="`https://image.tmdb.org/t/p/original/${moviedata.fields.poster_path}`" alt="">
+                <div  style="width=100% height=100%" v-else-if="moviedata.vote_average >= 7">
+                  <img @click="clickImage(moviedata)" class="medium" :src="`https://image.tmdb.org/t/p/original/${moviedata.poster_path}`" alt="">
                 </div>
-                <div  style="width=100% height=100%" v-else-if="moviedata.fields.vote_average >= 5">
-                  <img @click="clickImage(moviedata)" class="small" :src="`https://image.tmdb.org/t/p/original/${moviedata.fields.poster_path}`" alt="">
+                <div  style="width=100% height=100%" v-else-if="moviedata.vote_average >= 5">
+                  <img @click="clickImage(moviedata)" class="small" :src="`https://image.tmdb.org/t/p/original/${moviedata.poster_path}`" alt="">
                 </div>
                 <div style="width=100% height=100%" v-else>
-                  <img @click="clickImage(moviedata)" class="verysmall" :src="`https://image.tmdb.org/t/p/original/${moviedata.fields.poster_path}`" alt="">
+                  <img @click="clickImage(moviedata)" class="verysmall" :src="`https://image.tmdb.org/t/p/original/${moviedata.poster_path}`" alt="">
                 </div>
               </stack-item>
             </stack>
-          </b-card>
+            <infinite-loading @infinite="getMovie" spinner="spiral"></infinite-loading>
+          
           <template #overlay>
-            <div class="text-center" @click="goToDetail">
+            <div class="w-100 h-100" @click="goToDetail">
               <OverlayContent 
+              fixed
               :moviedata = moviedata
               />
             </div>
@@ -48,6 +49,7 @@
 import axios from 'axios'
 import { Stack, StackItem } from "vue-stack-grid"
 import OverlayContent from './OverlayContent.vue' 
+import InfiniteLoading from 'vue-infinite-loading';
 
 const SERVER_URL = process.env.VUE_APP_SERVER_URL
 
@@ -56,13 +58,17 @@ export default {
   components: {
     Stack, 
     StackItem,
-    OverlayContent
+    OverlayContent,
+    InfiniteLoading,
+
   },
   data() {
     return {
       moviedata: null,
       moviedatas: null,
       show: false, 
+      limit: 0,
+      movielist:[],
     }
   },
   methods: {
@@ -76,14 +82,25 @@ export default {
       }
       return config
     },
-    getMovie() {
+    getMovie($state) {
       const config = this.setToken()
-
-      axios.get(`${SERVER_URL}/moviedata/getMovie/`, config)
+      axios.get(`${SERVER_URL}/moviedata/`+(this.limit + 20), config)
         .then((res) => {
-          console.log(res.data.movie_res)
-          this.moviedatas = res.data.movie_res
-        })
+          setTimeout(() => {
+            if (res.data.length) {
+              this.limit += 10
+              this.movielist.push(res.data);
+              $state.loaded();
+              if (this.jobs.length / 10) {
+                $state.complete();
+                } else {
+                  $state.complete();
+                }
+            }
+          }, 1000)
+          console.log(res.data)
+          this.moviedatas = res.data
+        }, 1000)
         .catch((err) => {
           console.log(err)
         })
@@ -114,7 +131,7 @@ export default {
     },
   },
   created() {
-    this.getMovie()
+    this.getMovie(`${SERVER_URL}/moviedata/`+(this.limit + 1))
   }
 }
 
@@ -145,5 +162,10 @@ img {
 }
 .large { 
   height: 25rem;
+}
+.centerplz {
+  position: fixed !important;
+  top: 50%;
+  left: 50%;
 }
 </style>

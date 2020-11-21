@@ -5,8 +5,9 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
-    movie: []
+    movie: [],
   },
+
   mutations: {
     NOW_MOVIE: function(state, movieData) {
       console.log("되나보네")
@@ -15,8 +16,7 @@ export default new Vuex.Store({
     EMPTY_MOVIE: function(state) {
       console.log("지워졌다!")
       state.movie = []
-    }
-
+    },
   },
   actions: {
     nowMovie: function({commit}, movieData) {
@@ -26,7 +26,6 @@ export default new Vuex.Store({
     emptyMovie: function({commit}) {
       console.log("지워볼까?")
       commit('EMPTY_MOVIE')
-    }
-
+    },
   },
 })
