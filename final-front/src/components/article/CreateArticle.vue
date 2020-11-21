@@ -7,7 +7,8 @@
     </span>
     <label for="title"></label>
     <input type="text" @keypress.enter="createArticle" v-model="title" placeholder="Write your Opinion about Movie">
-    <button @click="createArticle">+</button>
+    
+    <b-icon icon="plus-circle-fill" v-b-tooltip.hover.topright="'plus'" @click="createArticle"></b-icon>
   </div>
 </template>
 

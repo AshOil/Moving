@@ -16,6 +16,7 @@
       @delete-article = deleteArticle
       @update-article = updateArticle
     />
+    
   </div>
 </template>
 
