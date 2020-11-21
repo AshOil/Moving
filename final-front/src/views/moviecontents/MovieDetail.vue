@@ -1,7 +1,7 @@
 <template>
   <div>
     <b-card-group columns>
-      <div>
+      <div class="block">
         <!-- 화면 상단 이미지 -->
         <b-card
           overlay
@@ -63,17 +63,8 @@
 
       <b-card img-src="https://picsum.photos/400/400/?image=41" img-alt="Image" overlay></b-card>
 
-      <b-card img-src="https://picsum.photos/400/200/?image=41" img-alt="Image" img-top>
-        <b-card-text>
-          This is a wider card with supporting text below as a natural lead-in to additional content.
-          This card has even longer content than the first.
-        </b-card-text>
-        <template #footer>
-          <small class="text-muted">Footer Text</small>
-        </template>
-      </b-card>
     </b-card-group>
-    <Article />
+    <ArticleList />
   </div>
 
 </template>

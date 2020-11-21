@@ -36,7 +36,6 @@ export default {
       const config = this.setToken()
       const articleItem = {
         title: this.title,
-        // #TODO: score 고치기
         score: this.score*2
       }
       axios.post('http://127.0.0.1:8000/articles/', articleItem, config)
