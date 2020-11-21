@@ -23,6 +23,9 @@ export default {
   props: {
     article: {
       type: Object,
+    },
+    movieid: {
+      type: Number,
     }
   },
   methods: {
@@ -37,18 +40,21 @@ export default {
     },
     deleteArticle() {
       const config = this.setToken()
-      axios.delete(`http://127.0.0.1:8000/moviedata/articles/${this.article.id}/`,config)
-      .then(res => {
-        console.log(res)
-        this.$emit('delete-article',res.data.id)
-      })
+      axios.delete(`http://127.0.0.1:8000/moviedata/${this.movieid}/articles/${this.article.id}/`,config)
+        .then(res => {
+          console.log(res)
+          this.$emit('delete-article',res.data.id)
+        })
+        .catch(err => {
+          console.log(err)
+        })
     },
     updateArticle() {
       const config = this.setToken()
       const articleItem = {
         title: this.article.title,
       }
-      axios.put(`http://127.0.0.1:8000/moviedata/articles/${this.article.id}/`, articleItem, config)
+      axios.put(`http://127.0.0.1:8000/moviedata/${this.movieid}/articles/${this.article.id}/`, articleItem, config)
         .then(res => {
           console.log(res.data)
           // this.$emit('update-todo', this.todo)

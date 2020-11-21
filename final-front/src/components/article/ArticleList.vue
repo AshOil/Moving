@@ -7,10 +7,12 @@
     <hr>
     <CreateArticle 
       @create-input = createdArticles
+      :movieid="movieid"
     />
     <Article
       v-for="article in articles" :key='article.id' 
       :article=article
+      :movieid="movieid"
       @delete-article = deleteArticle
       @update-article = updateArticle
     />
@@ -37,7 +39,7 @@ export default {
   data() {
     return {
       value: null,
-      articles: null
+      articles: []
     }
   },
   methods: {
@@ -54,7 +56,7 @@ export default {
       
       // Article List 가져와
       const config = this.setToken()
-      axios.get('http://127.0.0.1:8000/moviedata/articles/',config)
+      axios.get(`http://127.0.0.1:8000/moviedata/${this.movieid}/articles/`,config)
       .then(res => {
         console.log(res.data)
         this.articles = res.data
