@@ -16,6 +16,11 @@ import axios from 'axios'
 
 export default {
   name: 'CreateArticle',
+  props: {
+    movieid: {
+      type : Number
+    }
+  },
   data() {
     return {
       title: '',
@@ -36,9 +41,10 @@ export default {
       const config = this.setToken()
       const articleItem = {
         title: this.title,
-        score: this.score*2
+        score: this.score*2,
+        movie_id: this.movieid
       }
-      axios.post('http://127.0.0.1:8000/moviedata/articles/', articleItem, config)
+      axios.post(`http://127.0.0.1:8000/moviedata/${this.movieid}/articles/`, articleItem, config)
         .then(res => {
           console.log(res.data)
           // 반응형 변경!!
