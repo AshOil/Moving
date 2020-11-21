@@ -16,22 +16,25 @@
           </b-card-text>
         </b-card>
       </div>
-      <b-card>
+      <b-card >
         <MovieSpin 
           :moviedata = moviedata
-          :movieid = moviedata.id
+          :movieid = moviedata[0].movie_id
         />
       </b-card>
 
       <b-card title="Title" img-src="https://placekitten.com/500/350" img-alt="Image" img-top>
         <b-card-text>
-          This card has supporting text below as a natural lead-in to additional content.
+          <p>{{moviedata}}</p>
+          <p>{{moviedata[0].movie_id}}</p>
         </b-card-text>
         <b-card-text class="small text-muted">Last updated 3 mins ago</b-card-text>
       </b-card>
 
     </b-card-group>
-    <ArticleList />
+    <ArticleList 
+      :movieid = moviedata[0].movie_id
+    />
   </div>
 
 </template>
@@ -45,7 +48,7 @@ export default {
   name: 'MovieDetail',
   data() {
     return {
-      moviedata: this.movie
+      moviedata: this.movie,
     }
   },
 

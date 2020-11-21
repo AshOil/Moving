@@ -1,5 +1,6 @@
 <template>
   <div>
+    <p>{{ this.movieid }}</p>
     <p>사용자 평점: {{}}</p>
     <p>전문가 평점: </p>
     <p>한줄평</p>
@@ -24,6 +25,11 @@ import Article from '@/components/article/Article'
 
 export default {
   name: 'ArticleList',
+  props: {
+    movieid: {
+      type : Number
+    }
+  },
   components: {
     CreateArticle,
     Article
