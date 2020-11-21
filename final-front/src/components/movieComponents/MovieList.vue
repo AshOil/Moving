@@ -15,17 +15,17 @@
                 :key="idx"
                 style="transition: transform 300ms"
               >
-                <div style="width=100% height=100%" v-if="moviedata.vote_average >= 9">
-                  <img @click="clickImage(moviedata)" class="large" :src="`https://image.tmdb.org/t/p/original/${moviedata.poster_path}`" alt="">
+                <div style="width=100% height=100%" v-if="moviedata.fields.vote_average >= 9">
+                  <img @click="clickImage(moviedata)" class="large" :src="`https://image.tmdb.org/t/p/original/${moviedata.fields.poster_path}`" alt="">
                 </div>
-                <div  style="width=100% height=100%" v-else-if="moviedata.vote_average >= 7">
-                  <img @click="clickImage(moviedata)" class="medium" :src="`https://image.tmdb.org/t/p/original/${moviedata.poster_path}`" alt="">
+                <div  style="width=100% height=100%" v-else-if="moviedata.fields.vote_average >= 7">
+                  <img @click="clickImage(moviedata)" class="medium" :src="`https://image.tmdb.org/t/p/original/${moviedata.fields.poster_path}`" alt="">
                 </div>
-                <div  style="width=100% height=100%" v-else-if="moviedata.vote_average >= 5">
-                  <img @click="clickImage(moviedata)" class="small" :src="`https://image.tmdb.org/t/p/original/${moviedata.poster_path}`" alt="">
+                <div  style="width=100% height=100%" v-else-if="moviedata.fields.vote_average >= 5">
+                  <img @click="clickImage(moviedata)" class="small" :src="`https://image.tmdb.org/t/p/original/${moviedata.fields.poster_path}`" alt="">
                 </div>
                 <div style="width=100% height=100%" v-else>
-                  <img @click="clickImage(moviedata)" class="verysmall" :src="`https://image.tmdb.org/t/p/original/${moviedata.poster_path}`" alt="">
+                  <img @click="clickImage(moviedata)" class="verysmall" :src="`https://image.tmdb.org/t/p/original/${moviedata.fields.poster_path}`" alt="">
                 </div>
               </stack-item>
             </stack>
@@ -49,6 +49,8 @@ import axios from 'axios'
 import { Stack, StackItem } from "vue-stack-grid"
 import OverlayContent from './OverlayContent.vue' 
 
+const SERVER_URL = process.env.VUE_APP_SERVER_URL
+
 export default {
   name: "MovieList",
   components: {
@@ -64,11 +66,26 @@ export default {
     }
   },
   methods: {
+    setToken : function () {
+      const token = localStorage.getItem('jwt')
+
+      const config = {
+        header: {
+          Authorization: `JWT ${token}`
+        }
+      }
+      return config
+    },
     getMovie() {
-      axios.get("https://api.themoviedb.org/3/movie/popular?api_key=0a76d0b795d7b29081aedf5bd1a28297&language=ko-Kr&page=1")
-        .then(res => {
-          console.log(res.data.results)
-          this.moviedatas = res.data.results
+      const config = this.setToken()
+
+      axios.get(`${SERVER_URL}/moviedata/getMovie/`, config)
+        .then((res) => {
+          console.log(res.data.movie_res)
+          this.moviedatas = res.data.movie_res
+        })
+        .catch((err) => {
+          console.log(err)
         })
     },
     goToDetail() {
