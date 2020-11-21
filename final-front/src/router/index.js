@@ -5,7 +5,7 @@ import Signup from '../components/Signup.vue'
 import Login from '../components/Login.vue'
 import Main from '../views/moviecontents/Main.vue'
 import MovieDetail from '../views/moviecontents/MovieDetail.vue'
-import Article from '../components/Article.vue'
+import ArticleList from '../components/article/ArticleList'
 
 
 Vue.use(VueRouter)
@@ -37,9 +37,9 @@ const routes = [
     component: MovieDetail
   },
   {
-    path:'/article',
-    name: 'Article',
-    component: Article
+    path:'/articlelist',
+    name: 'ArticleList',
+    component: ArticleList
   },
 
 

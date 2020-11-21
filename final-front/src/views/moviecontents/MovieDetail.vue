@@ -1,12 +1,12 @@
 <template>
   <div>
-    <h1>{{ moviedata[0].fields.title}}</h1>
-    <Article />
+    <h1>{{ moviedata[0].title}}</h1>
+    <ArticleList />
   </div>
 </template>
 
 <script>
-import Article from '../../components/Article.vue'
+import ArticleList from '../../components/article/ArticleList'
 import {mapState} from 'vuex'
 
 export default {
@@ -18,7 +18,7 @@ export default {
   },
 
   components: {
-    Article,
+    ArticleList,
   },
   computed: {
     ...mapState([
