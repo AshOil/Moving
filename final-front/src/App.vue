@@ -1,6 +1,6 @@
 <template>
     <div id="app">
-      <router-link to="/article">Article</router-link>
+      <router-link to="/articlelist">ArticleList</router-link>
     <span v-if="login">
       <router-link to="/main">Main</router-link> |
       <router-link @click.native="logout" to="#">LogOut</router-link>
