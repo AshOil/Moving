@@ -7,7 +7,9 @@ import router from './router'
 
 import { BootstrapVue, BootstrapVueIcons } from 'bootstrap-vue'
 import { ModalPlugin } from 'bootstrap-vue'
-
+import VueYoutube from 'vue-youtube'
+ 
+Vue.use(VueYoutube)
 Vue.use(ModalPlugin)
 Vue.use(BootstrapVue)
 Vue.use(BootstrapVueIcons)

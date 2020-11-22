@@ -1,15 +1,13 @@
 <template>
   <div>
-    <p>사용자 평점: {{}}</p>
-    <p>전문가 평점: {{vote_average/2}}/5</p>
-    <p>한줄평</p>
+    <span>사용자 평점: 나중에넣기   전문가 평점: {{vote_average/2}}/5</span>
     <hr>
     <CreateArticle 
       @create-input = createdArticles
       :movieid="movieid"
     />
   <b-container fluid>
-    <b-row style="position:relative; overflow-y:auto; height:300px ">
+    <b-row style="position:relative; overflow-y:auto; height:650px ">
         <Article
           v-for="article in articles" :key='article.id' 
           :article=article

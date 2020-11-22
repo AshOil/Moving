@@ -1,24 +1,36 @@
 <template>
-  <b-container >
-    <b-row >
-      <b-carousel
-        id="carousel-1"
-        v-model="slide"
-        :interval="interval"
-        controls
-        indicators
-        background="#ababab"
+  <div>
+    <div class="px-3 py-2">
+      <b-container >
+        <b-row>
+          <b-carousel
+            id="carousel-1"
+            v-model="slide"
+            :interval="interval"
+            controls
+            indicators
+            background="#ababab"
+            style="text-shadow: 1px 1px 2px #333;"
+            @sliding-start="onSlideStart"
+            @sliding-end="onSlideEnd"
+          >
+          <div ref="show" :moviesuggest="moviesuggest" v-for="(moviesuggest, idx) in moviesuggests" :key="idx">
+            <b-carousel-slide :img-src="`https://image.tmdb.org/t/p/original/${moviesuggest.poster_path}`">
 
-        style="text-shadow: 1px 1px 2px #333;"
-        @sliding-start="onSlideStart"
-        @sliding-end="onSlideEnd"
-      >
-      <div ref="show"  v-for="(moviesuggest, idx) in moviesuggests" :key="idx">
-        <b-carousel-slide :img-src="`https://image.tmdb.org/t/p/original/${moviesuggest.poster_path}`"></b-carousel-slide>
-      </div>
-      </b-carousel>
-    </b-row>
-  </b-container>
+            <p class=" font-weight-bold text-white">{{moviesuggest.title}}</p>
+            
+            </b-carousel-slide>
+          </div>
+          </b-carousel>
+        </b-row>
+      </b-container>
+    </div>
+    <div>
+      <h1>안녕</h1>
+    </div>
+
+  </div>
+
 </template>
 
 
@@ -39,9 +51,9 @@ export default {
   },
   data() {
     return {
-      // moviedata: null,
+      moviesuggest: null,
       moviesuggests: null,
-      interval: 4000,
+      interval: 2000,
       slide: 0,
       sliding: null,
       // movieid: null
@@ -67,9 +79,13 @@ export default {
     // },
     onSlideStart() {
       this.sliding = true
+      // console.log(this.moviesuggest)
+      // console.log("되나")
     },
     onSlideEnd() {
       this.sliding = false
+      // console.log("되나2")
+      // console.log(this.moviesuggest)
     },
     clickCheck() {
       console.log('되나?')
@@ -86,8 +102,11 @@ export default {
 
 <style>
 #carousel-1 {
-  position: absolute; top:0; left: 0;
+  position: absolute; top:15; left: 0;
   width: 100%;
   height: 50%;
+}
+b-row {
+  position: relative;
 }
 </style>

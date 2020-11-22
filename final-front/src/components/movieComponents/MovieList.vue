@@ -157,4 +157,7 @@ img {
   top: 50%;
   left: 50%;
 }
+img {
+  margin: 0 !important;
+}
 </style>
