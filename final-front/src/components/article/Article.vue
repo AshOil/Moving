@@ -1,15 +1,15 @@
 <template>
-<div>
+<div class="rating">
+  <p>{{article.user}}</p>
   <b-form-rating 
   id="rating-inline" 
+  no-border=true
   inline
   variant="warning"
   :value="article.score/2"
   readonly
   ></b-form-rating>
-  <br>
   <span>{{article.score}}</span>
-  <br>
   <span>{{article.title}}</span>
   <b-icon icon="pencil-fill" @click="updateArticle" v-b-tooltip.hover.topright="'update'"></b-icon>
   <b-icon icon="trash-fill" @click="deleteArticle" v-b-tooltip.hover.topright="'delete'"></b-icon>

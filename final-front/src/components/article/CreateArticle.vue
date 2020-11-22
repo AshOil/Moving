@@ -47,7 +47,7 @@ export default {
       }
       axios.post(`http://127.0.0.1:8000/moviedata/${this.movieid}/articles/`, articleItem, config)
         .then(res => {
-          console.log(res.data)
+          
           // 반응형 변경!!
           this.$emit('create-input', res.data)
         })
