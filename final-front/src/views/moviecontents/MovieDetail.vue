@@ -1,55 +1,55 @@
 <template>
   <div class="container">
-    <b-card-group columns deck>
+    <b-card-group>
       <div class="d-block">
         <!-- 화면 상단 이미지 -->
         <b-card
           overlay
           :img-src="`https://image.tmdb.org/t/p/w1280/${moviedata[0].backdrop_path}`"
+          margin=0
           img-alt="Card Image"
           text-variant="white"
           :title= moviedata[0].title
           :sub-title= moviedata[0].overview
+
+          img-top
+          style="max-height: 40rem;"
+          class="mb-2"
         >
         </b-card>
       </div>
-      <b-card class="">
-         <b-card-text>
-        <p>관련 영화</p>
-        <hr>
-      </b-card-text>
-      <template>
-        <div>
-         <MovieSpin 
-          :moviedata = moviedata
-          :movieid = moviedata[0].movie_id
-        />
-        </div>
-      </template>
-        
-       
-      </b-card>
+
 
       <b-card >
         <b-card-text>
           <p>{{moviedata}}</p>
           <p>{{moviedata[0].movie_id}}</p>
+          <div>
+          <b-button v-b-toggle.sidebar-border>관련 영화 찾아보기</b-button>
+            <b-sidebar id="sidebar-border" sidebar-class="border-right border-danger">
+              <div class="px-3 py-2">
+
+                <MovieSpin 
+                  :moviedata = moviedata
+                  :movieid = moviedata[0].movie_id
+                />
+
+              </div>
+            </b-sidebar>
+          </div>
         </b-card-text>
       </b-card>
 
       
       <b-card >
-        <b-card-text>
-          <p>{{moviedata}}</p>
-          <p>{{moviedata[0].movie_id}}</p>
-        </b-card-text>
+          
+        <ArticleList 
+          :movieid = moviedata[0].movie_id
+          :vote_average = moviedata[0].vote_average
+        />
       </b-card>
 
     </b-card-group>
-    <ArticleList 
-      :movieid = moviedata[0].movie_id
-      :vote_average = moviedata[0].vote_average
-    />
   </div>
 
 </template>

@@ -1,20 +1,36 @@
 <template>
 <div class="rating">
-  <p>{{article.user}}</p>
-  <b-form-rating 
-  id="rating-inline" 
-  no-border=true
-  inline
-  variant="warning"
-  :value="article.score/2"
-  readonly
-  ></b-form-rating>
-  <span>{{article.score}}</span>
-  <span>{{article.title}}</span>
-  <b-icon icon="pencil-fill" @click="updateArticle" v-b-tooltip.hover.topright="'update'"></b-icon>
+  
+  <div v-if="updateState">
+    <span>
+      <label for="rating-inline" style="margin-right: 10px">Score: </label>
+      <b-form-rating id="rating-inline" inline v-model="changescore" variant="warning"></b-form-rating>
+    </span>
+    <label for="changetitle"></label>
+    <input type="text" @keypress.enter="updateArticle" v-model="changetitle" >
+    <b-icon icon="pencil-fill" v-b-tooltip.hover.topright="'plus'" @click="updateArticle"></b-icon>
+  </div>
+
+  <div v-else>
+    <b-form-rating 
+      id="rating-inline" 
+      no-border=true
+      inline
+      variant="warning"
+      :value="article.score/2"
+      readonly
+    ></b-form-rating>
+    <p>{{article.user}}</p>
+    <span>{{article.title}}</span>
+  </div>
+  <b-icon v-if="!updateState" icon="pencil-fill" @click="changeUpdateState" v-b-tooltip.hover.topright="'update'"></b-icon>
   <b-icon icon="trash-fill" @click="deleteArticle" v-b-tooltip.hover.topright="'delete'"></b-icon>
   <b-icon icon="chat-right-text-fill" v-b-tooltip.hover.topright="'Comments'"></b-icon>
+  <hr>
+
 </div>
+  
+
   
 </template>
 
