@@ -8,13 +8,17 @@
       @create-input = createdArticles
       :movieid="movieid"
     />
-    <Article
-      v-for="article in articles" :key='article.id' 
-      :article=article
-      :movieid="movieid"
-      @delete-article = deleteArticle
-      @update-article = updateArticle
-    />
+  <b-container fluid>
+    <b-row style="position:relative; overflow-y:auto; height:300px ">
+        <Article
+          v-for="article in articles" :key='article.id' 
+          :article=article
+          :movieid="movieid"
+          @delete-article = deleteArticle
+          @update-article = updateArticle
+        />
+    </b-row>
+  </b-container>
     
     
   </div>
