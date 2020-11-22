@@ -3,20 +3,22 @@
     <span>
       <label for="rating-inline" style="margin-right: 10px">Score: </label>
       <b-form-rating id="rating-inline" inline v-model="score" variant="warning"></b-form-rating>
-      <span>{{score*2}}</span>
     </span>
     <label for="title"></label>
     <input type="text" @keypress.enter="createArticle" v-model="title" placeholder="Write your Opinion about Movie">
     
     <b-icon icon="plus-circle-fill" v-b-tooltip.hover.topright="'plus'" @click="createArticle"></b-icon>
+  
   </div>
 </template>
 
 <script>
 import axios from 'axios'
 
+
 export default {
   name: 'CreateArticle',
+ 
   props: {
     movieid: {
       type : Number
