@@ -6,7 +6,9 @@ import store from './store'
 import router from './router'
 
 import { BootstrapVue, BootstrapVueIcons } from 'bootstrap-vue'
+import { ModalPlugin } from 'bootstrap-vue'
 
+Vue.use(ModalPlugin)
 Vue.use(BootstrapVue)
 Vue.use(BootstrapVueIcons)
 

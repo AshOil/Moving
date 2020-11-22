@@ -2,7 +2,6 @@
   <div>
     <div class="container">
       <div class=" w-100">
-        <b-overlay :show="show" @click="clickPossible"> 
             <stack
               :column-min-width="150"
               :gutter-width="15"
@@ -29,16 +28,14 @@
               </stack-item>
             </stack>
             <infinite-loading @infinite="getMovie" spinner="spiral"></infinite-loading>
-          
-          <template #overlay>
-            <div class="w-100 h-100" @click="goToDetail">
-              <OverlayContent 
-              fixed
-              :moviedata = moviedata
-              />
-            </div>
-          </template>
-        </b-overlay>
+            <b-modal v-model="modalShow" hide-footer title= "오늘의 추천 영화!">
+              <div class="d-block text-center" @click="goToDetail">
+                <OverlayContent 
+                fixed
+                :moviedata = moviedata
+                />
+              </div>
+            </b-modal>
       </div>
     </div>
   </div>
@@ -69,6 +66,7 @@ export default {
       show: false, 
       limit: 0,
       movielist:[],
+      modalShow: false,
     }
   },
   methods: {
@@ -97,7 +95,7 @@ export default {
                   $state.complete();
                 }
             }
-          }, 1000)
+          }, 1500)
           console.log(res.data)
           this.moviedatas = res.data
         }, 1000)
@@ -109,26 +107,17 @@ export default {
       this.$store.dispatch('nowMovie',this.moviedata)
       this.$router.push("MovieDetail")
     },
-    onShown() {
-      // Focus the cancel button when the overlay is showing
-      this.$refs.cancel.focus()
-
-    },
-    onHidden() {
-      // Focus the show button when the overlay is removed
-      this.$refs.show.focus()
-
+    clickImage(moviedata) {
+        this.modalShow = !this.modalShow
+        this.moviedata = moviedata
+        console.log(this.moviedata)
     },
     clickPossible() {
       if (this.show) {
         this.show = false
       }
     },
-    clickImage(moviedata) {
-        this.show = !this.show
-        this.moviedata = moviedata
-        console.log(this.moviedata)
-    },
+
   },
   created() {
     this.getMovie(`${SERVER_URL}/moviedata/`+(this.limit + 1))
