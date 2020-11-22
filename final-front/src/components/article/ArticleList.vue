@@ -1,7 +1,7 @@
 <template>
   <div>
     <p>사용자 평점: {{}}</p>
-    <p>전문가 평점: {{vote_average}}</p>
+    <p>전문가 평점: {{vote_average/2}}/5</p>
     <p>한줄평</p>
     <hr>
     <CreateArticle 
@@ -15,6 +15,7 @@
       @delete-article = deleteArticle
       @update-article = updateArticle
     />
+    
     
   </div>
 </template>
@@ -37,7 +38,8 @@ export default {
   },
   components: {
     CreateArticle,
-    Article
+    Article,
+
   },
   data() {
     return {
