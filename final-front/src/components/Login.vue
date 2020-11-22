@@ -6,7 +6,7 @@
     <label for="password"></label>
     <input type="password" id="password" v-model="credentials.password" @keypress.enter="login(credentials)" placeholder="Your password" class="form-control">
     <br />
-    <b-button @click="login(credentials)">LogIn</b-button>
+    <b-button @click="login(credentials)" >LogIn</b-button>
   </div>
 </template>
 
@@ -32,6 +32,10 @@ export default {
           localStorage.setItem('jwt', res.data.token)
           this.$emit('login')
           this.$router.push({name:'Main'})
+        })
+        .catch(err => {
+          console.log(err)
+          alert('로그인에 실패하였습니다.')
         })
     }
   }

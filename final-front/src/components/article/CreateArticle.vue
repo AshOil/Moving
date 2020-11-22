@@ -44,9 +44,10 @@ export default {
       const config = this.setToken()
       const articleItem = {
         title: this.title,
-        score: this.score*2,
+        score: this.score,
         movie_id: this.movieid
       }
+      console.log(articleItem)
       axios.post(`http://127.0.0.1:8000/moviedata/${this.movieid}/articles/`, articleItem, config)
         .then(res => {
           
