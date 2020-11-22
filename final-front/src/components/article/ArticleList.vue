@@ -1,8 +1,7 @@
 <template>
   <div>
-    <p>{{ this.movieid }}</p>
     <p>사용자 평점: {{}}</p>
-    <p>전문가 평점: </p>
+    <p>전문가 평점: {{vote_average}}</p>
     <p>한줄평</p>
     <hr>
     <CreateArticle 
@@ -31,6 +30,9 @@ export default {
   props: {
     movieid: {
       type : Number
+    },
+    vote_average: {
+      type: Number
     }
   },
   components: {
@@ -67,6 +69,7 @@ export default {
       })
     },
     createdArticles(text) {
+      console.log(text)
       this.articles.push(text)
     },
     deleteArticle(articleId) {

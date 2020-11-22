@@ -48,6 +48,7 @@
     </b-card-group>
     <ArticleList 
       :movieid = moviedata[0].movie_id
+      :vote_average = moviedata[0].vote_average
     />
   </div>
 
