@@ -1,5 +1,30 @@
 <template>
-    <div id="app">
+    <div id="app" class="bg-dark h-100%">
+  <!-- <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand" href="#">Navbar</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarColor02">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+          <router-link to="/main">Main</router-link> 
+        </li>
+        <li class="nav-item">
+          <router-link to="/main">Main</router-link>
+        </li>
+        <li class="nav-item">
+          <router-link @click.native="logout" to="#">LogOut</router-link>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">About</a>
+        </li>
+      </ul>
+    </div>
+  </nav> -->
+
+
       <router-link to="/main">Main</router-link> |
     <span v-if="login">
       <router-link to="/main">Main</router-link> |
