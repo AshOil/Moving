@@ -21,6 +21,7 @@ export default {
     logout() {
       console.log('logout')
       this.login =false
+      this.$store.dispatch('emptyUser')
       localStorage.removeItem('jwt')
       this.$router.push({name: 'Home' })
     }

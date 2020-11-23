@@ -25,7 +25,7 @@
       :value="article.score"
       readonly
     ></b-form-rating>
-    <span>{{article.user}}님의 한줄평   {{article.title}}   </span>
+    <span>{{article.user}}님의 한줄평:         {{article.title}}   </span>
   </div>
     <b-icon class="d-inline" v-if="!updateState" icon="pencil-fill" @click="changeUpdate" v-b-tooltip.hover.topright="'update'"></b-icon>
     <b-icon class="d-inline" icon="trash-fill" @click="deleteArticle" v-b-tooltip.hover.topright="'delete'"></b-icon>
@@ -36,6 +36,7 @@
 
 <script>
 import axios from 'axios'
+import {mapState} from 'vuex'
 
 
 export default {
@@ -68,8 +69,14 @@ export default {
       }
       return config
     },
+    // TODO: article.user != 로그인한 유저
     changeUpdate() {
-      this.updateState = !this.updateState 
+      console.log(this.user)
+      if (this.user[0]!=this.article.user) {
+        alert('수정할 수 없습니다!!')
+      } else {
+        this.updateState = !this.updateState 
+      }
 
     },
 
@@ -101,6 +108,8 @@ export default {
           console.log(res.data)
           this.updateState = !this.updateState 
           console.log('가라ㅏ')
+          this.article.title = this.title
+          this.article.score = this.score
           
         })
         .catch(err => {
@@ -108,6 +117,11 @@ export default {
           
         })
   },
+  },
+  computed: {
+    ...mapState([
+      'user'
+    ]),
   },
   created() {
     this.title = this.article.title
