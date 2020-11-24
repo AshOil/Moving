@@ -6,7 +6,7 @@
     <label for="password"></label>
     <input type="password" id="password" v-model="credentials.password" @keypress.enter="login(credentials)" placeholder="Your password" class="form-control">
     <br />
-    <b-button @click="login(credentials)" >LogIn</b-button>
+    <b-button @click="login(credentials)" class= "text-color=yellow" >LogIn</b-button>
   </div>
 </template>
 

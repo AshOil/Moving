@@ -135,15 +135,19 @@ img {
 }
 .verysmall { 
   height: 8rem;
+  border: solid red 2px;
 }
 .small { 
   height: 12rem;
+  border: solid gray 2px;
 }
 .medium { 
   height: 16rem;
+  border: solid gray 2px;
 }
 .large { 
   height: 25rem;
+  border: solid yellow 2px;
 }
 .centerplz {
   position: fixed !important;

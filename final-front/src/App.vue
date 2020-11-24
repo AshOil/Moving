@@ -1,42 +1,14 @@
 <template>
-  <div id="app" style="background-color: #14181b">
-    <div id="nav" class="p-3">
-      <div style="width: 1220px; margin: 0 auto ">
-        <nav class="navbar navbar-expand-lg navbar-light" style="height: 40px">
-          <router-link
-            to="/"
-            class="navbar-brand"
-            href="#"
-            router-tag="a"
-            style="color: #f0f0f0"
-            >
-             <img src="./assets/logo.png" class="d-inline-block align-top" alt="Kitten">
-            </router-link
-          >
-          <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav mr-auto">
-              <li class="nav-item">
-                <router-link style="background-color: #14181b" to="/" class="nav-link" router-tag="a"
-                  >Home</router-link
-                >
-              </li>
-              <li class="nav-item">
-                <router-link style="background-color: #14181b" to="/main" class="nav-link" router-tag="a"
-                  >Main</router-link
-                >
-              </li>
-              <li class="nav-item">
-                <router-link style="background-color: #14181b" to="/" class="nav-link" router-tag="a"
-                  @click.native="logout">Logout</router-link
-                >
-              </li>
-            </ul>
-          </div>
-        </nav>
-      </div>
-    </div>
+<div>
+  <div v-if="!login">
     <router-view />
   </div>
+  <div v-else>
+    <div id="app" style="background-color: #14181b">
+      <router-view />
+    </div>
+  </div>
+</div>
 </template>
 
 
