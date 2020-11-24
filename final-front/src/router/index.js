@@ -6,6 +6,7 @@ import Login from '../components/Login.vue'
 import Main from '../views/moviecontents/Main.vue'
 import MovieDetail from '../views/moviecontents/MovieDetail.vue'
 import ArticleList from '../components/article/ArticleList'
+import Profile from '../views/Profile.vue'
 
 
 Vue.use(VueRouter)
@@ -40,6 +41,11 @@ const routes = [
     path:'/articlelist',
     name: 'ArticleList',
     component: ArticleList
+  },
+  {
+    path:'/profile',
+    name: 'Profile',
+    component: Profile
   },
 
 

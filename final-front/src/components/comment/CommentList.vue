@@ -52,14 +52,8 @@ export default {
       return config
     },
     getComments() {
-      console.log(this.comments)
       // Comment List 가져와
       const config = this.setToken()
-      // const commentItem = {
-      //   article_id: this.article.id,
-      //   movie_id: this.movieid
-      // }
-      console.log(config)
       axios.get(`http://127.0.0.1:8000/moviedata/${this.movieid}/articles/${this.article.id}/comments/`, config)
       .then(res => {
         console.log(res.data)
