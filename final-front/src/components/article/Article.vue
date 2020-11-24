@@ -31,17 +31,27 @@
       <b-icon class="d-inline" icon="chat-right-text-fill" v-b-tooltip.hover.topright="'Comments'"></b-icon>
     </span>
   </div>
+    <b-icon class="d-inline" v-if="!updateState" icon="pencil-fill" @click="changeUpdate" v-b-tooltip.hover.topright="'update'"></b-icon>
+    <b-icon class="d-inline" icon="trash-fill" @click="deleteArticle" v-b-tooltip.hover.topright="'delete'"></b-icon>
+    <b-icon class="d-inline" @click="showComment" icon="sort-down-alt" v-b-tooltip.hover.topright="'Comments'"></b-icon>
+    <div v-if="commentState">
+      <CommentList 
+        :movieid="movieid" 
+        :article="article" />
+    </div>
+</div> 
 </template>
 
 <script>
 import axios from 'axios'
 import {mapState} from 'vuex'
+import CommentList from '../comment/CommentList'
 
 
 export default {
   name: 'Article',
   components: {
-    
+    CommentList,
   },
   props: {
     article: {
@@ -54,6 +64,7 @@ export default {
   data() {
     return {
       updateState: false,
+      commentState: false,
       score: 0,
       title: '',
     }
@@ -68,7 +79,6 @@ export default {
       }
       return config
     },
-    // TODO: article.user != 로그인한 유저
     changeUpdate() {
       console.log(this.user)
       if (this.user[0]!=this.article.user) {
@@ -76,7 +86,6 @@ export default {
       } else {
         this.updateState = !this.updateState 
       }
-
     },
 
     deleteArticle() {
@@ -115,7 +124,12 @@ export default {
           console.log(err)
           
         })
+    },
+  showComment() {
+    this.commentState = !this.commentState
   },
+
+
   },
   computed: {
     ...mapState([
