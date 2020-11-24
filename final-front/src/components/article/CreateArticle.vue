@@ -2,7 +2,7 @@
   <div>
     <span>
       <label for="rating-inline" style="margin-right: 10px">Score: </label>
-      <b-form-rating id="rating-inline" inline v-model="score" variant="warning"></b-form-rating>
+      <b-form-rating id="rating-inline" inline v-model="score" variant="warning" no-border=true style="background: #00000000;"></b-form-rating>
     </span>
     <label for="title"></label>
     <input type="text" @keypress.enter="createArticle" v-model="title" placeholder="Write your Opinion about Movie">

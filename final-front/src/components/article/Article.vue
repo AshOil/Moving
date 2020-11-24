@@ -4,6 +4,7 @@
       <b-form-rating 
         id="score" 
         no-border=true
+        style="background: #00000000;"
         inline 
         variant="warning" 
         v-model="score"   
@@ -19,6 +20,7 @@
     <b-form-rating 
       id="rating-inline" 
       no-border=true
+      style="background: #00000000;"
       inline
       variant="warning"
       :value="article.score"
