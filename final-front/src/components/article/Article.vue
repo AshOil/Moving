@@ -28,12 +28,8 @@
     <span>
       <b-icon class="d-inline" v-if="!updateState" icon="pencil-fill" @click="changeUpdate" v-b-tooltip.hover.topright="'update'"></b-icon>
       <b-icon class="d-inline" icon="trash-fill" @click="deleteArticle" v-b-tooltip.hover.topright="'delete'"></b-icon>
-      <b-icon class="d-inline" icon="chat-right-text-fill" v-b-tooltip.hover.topright="'Comments'"></b-icon>
+      <b-icon class="d-inline" @click="showComment" icon="sort-down-alt" v-b-tooltip.hover.topright="'Comments'"></b-icon>
     </span>
-  </div>
-    <b-icon class="d-inline" v-if="!updateState" icon="pencil-fill" @click="changeUpdate" v-b-tooltip.hover.topright="'update'"></b-icon>
-    <b-icon class="d-inline" icon="trash-fill" @click="deleteArticle" v-b-tooltip.hover.topright="'delete'"></b-icon>
-    <b-icon class="d-inline" @click="showComment" icon="sort-down-alt" v-b-tooltip.hover.topright="'Comments'"></b-icon>
     <div v-if="commentState">
       <CommentList 
         :movieid="movieid" 
