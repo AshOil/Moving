@@ -62,9 +62,9 @@ export default {
   data() {
     return {
       moviedata: null,
-      moviedatas: null,
+      moviedatas: [],
       show: false, 
-      limit: 0,
+      limit: 20,
       movielist:[],
       modalShow: false,
     }
@@ -82,12 +82,12 @@ export default {
     },
     getMovie($state) {
       const config = this.setToken()
-      axios.get(`${SERVER_URL}/moviedata/`+(this.limit + 20), config)
+      axios.get(`${SERVER_URL}/moviedata/`+(this.limit), config)
         .then((res) => {
           setTimeout(() => {
             if (res.data.length) {
-              this.limit += 10
-              this.movielist.push(res.data);
+              // this.limit += 10
+              this.moviedatas.push.apply(this.moviedatas, res.data);
               $state.loaded();
               if (this.jobs.length / 10) {
                 $state.complete();
@@ -96,8 +96,6 @@ export default {
                 }
             }
           }, 1500)
-          console.log(res.data)
-          this.moviedatas = res.data
         }, 1000)
         .catch((err) => {
           console.log(err)
@@ -115,7 +113,7 @@ export default {
 
   },
   created() {
-    this.getMovie(`${SERVER_URL}/moviedata/`+(this.limit + 1))
+    this.getMovie(`${SERVER_URL}/moviedata/`+(this.limit))
   }
 }
 
