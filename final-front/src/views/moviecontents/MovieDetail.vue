@@ -113,6 +113,15 @@ export default {
     }
   },
   methods: {
+    setToken() {
+      const token =localStorage.getItem('jwt')
+      const config = {
+        headers:{
+          Authorization: `JWT ${token}`
+        }
+      }
+      return config
+    },
     getMovie() {
       axios.get(`https://api.themoviedb.org/3/movie/${this.mymovieid}?api_key=0a76d0b795d7b29081aedf5bd1a28297&language=ko-Kr&page=1`)
         .then(res => {
@@ -140,6 +149,16 @@ export default {
       this.$store.dispatch('suggestMovie', this.slidemovie)
       // console.log(this.movie)
       this.$router.go(this.$router.currentRoute)
+    },
+    scoreAvg() {
+      const config = this.setToken()
+      axios.get(`http://127.0.0.1:8000/moviedata/${this.mymovieid}/score/`,config)
+      .then(res => {
+        console.log(res.data)  
+      })
+      .catch(err => {
+        console.log(err)
+      })
     }
   },
   components: {
@@ -166,6 +185,7 @@ export default {
     this.getMovie()
     this.getVideo()
     // console.log(this.movie)
+    this.scoreAvg()
   },
 
 }
