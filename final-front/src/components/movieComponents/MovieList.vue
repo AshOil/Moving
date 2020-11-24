@@ -13,8 +13,8 @@
                 :key="idx"
                 style="transition: transform 300ms"
               >
-                <div style="width=100% height=100%" v-if="moviedata.vote_average >= 9">
-                  <img @click="clickImage(moviedata)" class="large" :src="`https://image.tmdb.org/t/p/original/${moviedata.poster_path}`" alt="">
+                <div style="width=100% height=100%" v-if="moviedata.vote_average >= 8.5">
+                  <img @click="clickImage(moviedata)" class="large veryhigh" :src="`https://image.tmdb.org/t/p/original/${moviedata.poster_path}`" alt="">
                 </div>
                 <div  style="width=100% height=100%" v-else-if="moviedata.vote_average >= 7">
                   <img @click="clickImage(moviedata)" class="medium" :src="`https://image.tmdb.org/t/p/original/${moviedata.poster_path}`" alt="">
@@ -112,11 +112,6 @@ export default {
         this.moviedata = moviedata
         console.log(this.moviedata)
     },
-    clickPossible() {
-      if (this.show) {
-        this.show = false
-      }
-    },
 
   },
   created() {
@@ -159,5 +154,24 @@ img {
 }
 img {
   margin: 0 !important;
+}
+
+.veryhigh {
+  animation: shake 0.5s;
+  animation-iteration-count: infinite;
+}
+
+@keyframes shake {
+  0% { transform: translate(1px, 1px) rotate(0deg); }
+  10% { transform: translate(-1px, -2px) rotate(-1deg); }
+  20% { transform: translate(-3px, 0px) rotate(1deg); }
+  30% { transform: translate(3px, 2px) rotate(0deg); }
+  40% { transform: translate(1px, -1px) rotate(1deg); }
+  50% { transform: translate(-1px, 2px) rotate(-1deg); }
+  60% { transform: translate(-3px, 1px) rotate(0deg); }
+  70% { transform: translate(3px, 1px) rotate(-1deg); }
+  80% { transform: translate(-1px, -1px) rotate(1deg); }
+  90% { transform: translate(1px, 2px) rotate(0deg); }
+  100% { transform: translate(1px, -2px) rotate(-1deg); }
 }
 </style>
