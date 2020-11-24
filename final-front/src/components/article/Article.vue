@@ -76,8 +76,8 @@ export default {
       return config
     },
     changeUpdate() {
-      console.log(this.user)
-      if (this.user[0]!=this.article.user) {
+      console.log(this.username)
+      if (this.username!=this.article.user) {
         alert('수정할 수 없습니다!!')
       } else {
         this.updateState = !this.updateState 
@@ -129,7 +129,7 @@ export default {
   },
   computed: {
     ...mapState([
-      'user'
+      'username'
     ]),
   },
   created() {

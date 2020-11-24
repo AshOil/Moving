@@ -26,8 +26,8 @@
                 >
               </li>
               <li class="nav-item">
-                <router-link style="background-color: #14181b" to="#" class="nav-link" router-tag="a"
-                  >Login</router-link
+                <router-link style="background-color: #14181b" to="/" class="nav-link" router-tag="a"
+                  @click.native="logout">Logout</router-link
                 >
               </li>
             </ul>

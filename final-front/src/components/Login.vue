@@ -25,13 +25,12 @@ export default {
   },
   methods: {
     login({ username, password }) {
-      this.$store.dispatch('addUser', this.credentials.username)
-
       axios.post('http://127.0.0.1:8000/accounts/api-token-auth/', { username, password })
         .then(res => {
           console.log(res.data)
           localStorage.setItem('jwt', res.data.token)
           this.$emit('login')
+          this.$store.dispatch('addUser', this.credentials.username)
           this.$router.push({name:'Main'})
         })
         .catch(err => {

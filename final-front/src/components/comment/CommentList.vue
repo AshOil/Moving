@@ -74,7 +74,8 @@ export default {
       this.comments.push(text)
       console.log(this.comments)
     },
-    deleteArticle(commentId) {
+    deleteComment(commentId) {
+      console.log(commentId)
       this.comments = this.comments.filter(comment => {
         return comment.id !== commentId
       })
@@ -82,7 +83,7 @@ export default {
   },
   created() {
     this.getComments()
-  }
+  },
 
 }
 </script>
