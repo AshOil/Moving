@@ -1,38 +1,44 @@
 <template>
-    <div id="app" class="bg-dark h-100%">
-  <!-- <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <a class="navbar-brand" href="#">Navbar</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-
-    <div class="collapse navbar-collapse" id="navbarColor02">
-      <ul class="navbar-nav mr-auto">
-        <li class="nav-item active">
-          <router-link to="/main">Main</router-link> 
-        </li>
-        <li class="nav-item">
-          <router-link to="/main">Main</router-link>
-        </li>
-        <li class="nav-item">
-          <router-link @click.native="logout" to="#">LogOut</router-link>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">About</a>
-        </li>
-      </ul>
+  <div id="app" style="background-color: #14181b">
+    <div id="nav" class="p-3">
+      <div style="width: 1220px; margin: 0 auto ">
+        <nav class="navbar navbar-expand-lg navbar-light" style="height: 40px">
+          <router-link
+            to="/"
+            class="navbar-brand"
+            href="#"
+            router-tag="a"
+            style="color: #f0f0f0"
+            >
+             <img src="./assets/logo.png" class="d-inline-block align-top" alt="Kitten">
+            </router-link
+          >
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+              <li class="nav-item">
+                <router-link style="background-color: #14181b" to="/" class="nav-link" router-tag="a"
+                  >Home</router-link
+                >
+              </li>
+              <li class="nav-item">
+                <router-link style="background-color: #14181b" to="/main" class="nav-link" router-tag="a"
+                  >Main</router-link
+                >
+              </li>
+              <li class="nav-item">
+                <router-link style="background-color: #14181b" to="#" class="nav-link" router-tag="a"
+                  >Login</router-link
+                >
+              </li>
+            </ul>
+          </div>
+        </nav>
+      </div>
     </div>
-  </nav> -->
-
-
-      <router-link to="/main">Main</router-link> |
-    <span v-if="login">
-      <router-link to="/main">Main</router-link> |
-      <router-link @click.native="logout" to="#">LogOut</router-link>
-    </span>
-    <router-view @login="login = true" />
+    <router-view />
   </div>
 </template>
+
 
 <script>
 export default {

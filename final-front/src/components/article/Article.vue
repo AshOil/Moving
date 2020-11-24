@@ -1,6 +1,5 @@
 <template>
-<div class="rating">
-  <div v-if="updateState">
+  <div class="rating" v-if="updateState">
     <span>
       <b-form-rating 
         id="score" 
@@ -25,7 +24,12 @@
       :value="article.score"
       readonly
     ></b-form-rating>
-    <span>{{article.user}}님의 한줄평:         {{article.title}}   </span>
+    <span class="d-inline" >{{article.user}}님의 한줄평:         {{article.title}}   </span>
+    <span>
+      <b-icon class="d-inline" v-if="!updateState" icon="pencil-fill" @click="changeUpdate" v-b-tooltip.hover.topright="'update'"></b-icon>
+      <b-icon class="d-inline" icon="trash-fill" @click="deleteArticle" v-b-tooltip.hover.topright="'delete'"></b-icon>
+      <b-icon class="d-inline" icon="chat-right-text-fill" v-b-tooltip.hover.topright="'Comments'"></b-icon>
+    </span>
   </div>
     <b-icon class="d-inline" v-if="!updateState" icon="pencil-fill" @click="changeUpdate" v-b-tooltip.hover.topright="'update'"></b-icon>
     <b-icon class="d-inline" icon="trash-fill" @click="deleteArticle" v-b-tooltip.hover.topright="'delete'"></b-icon>

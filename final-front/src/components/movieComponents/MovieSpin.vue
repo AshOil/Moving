@@ -18,19 +18,13 @@
             <b-carousel-slide :img-src="`https://image.tmdb.org/t/p/original/${moviesuggest.poster_path}`">
 
             <p class=" font-weight-bold text-white">{{moviesuggest.title}}</p>
-            
             </b-carousel-slide>
           </div>
           </b-carousel>
         </b-row>
       </b-container>
     </div>
-    <div>
-      <h1>안녕</h1>
-    </div>
-
   </div>
-
 </template>
 
 
@@ -57,8 +51,7 @@ export default {
       slide: 0,
       sliding: null,
       // movieid: null
-      idx: null
-      
+      idx: null,
     }
   },
   methods: {
@@ -79,13 +72,12 @@ export default {
     // },
     onSlideStart() {
       this.sliding = true
-      // console.log(this.moviesuggest)
-      // console.log("되나")
     },
     onSlideEnd() {
       this.sliding = false
-      // console.log("되나2")
-      // console.log(this.moviesuggest)
+      // this.$store.dispatch('emptyMovie')
+      this.$emit('nowslide', this.moviesuggests[this.slide])
+      // console.log(this.moviesuggests[this.slide])
     },
     clickCheck() {
       console.log('되나?')
