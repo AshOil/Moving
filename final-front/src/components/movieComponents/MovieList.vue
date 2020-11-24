@@ -13,8 +13,11 @@
                 :key="idx"
                 style="transition: transform 300ms"
               >
-                <div style="width=100% height=100%" v-if="moviedata.vote_average >= 8.5">
+                <div style="width=100% height=100%" v-if="moviedata.movie_id in movieidforuser">
                   <img @click="clickImage(moviedata)" class="large veryhigh" :src="`https://image.tmdb.org/t/p/original/${moviedata.poster_path}`" alt="">
+                </div>
+                <div style="width=100% height=100%" v-else-if="moviedata.vote_average >= 8.5">
+                  <img @click="clickImage(moviedata)" class="large" :src="`https://image.tmdb.org/t/p/original/${moviedata.poster_path}`" alt="">
                 </div>
                 <div  style="width=100% height=100%" v-else-if="moviedata.vote_average >= 7">
                   <img @click="clickImage(moviedata)" class="medium" :src="`https://image.tmdb.org/t/p/original/${moviedata.poster_path}`" alt="">
@@ -44,6 +47,7 @@
 
 <script>
 import axios from 'axios'
+import {mapState} from 'vuex'
 import { Stack, StackItem } from "vue-stack-grid"
 import OverlayContent from './OverlayContent.vue' 
 import InfiniteLoading from 'vue-infinite-loading';
@@ -64,9 +68,12 @@ export default {
       moviedata: null,
       moviedatas: [],
       show: false, 
-      limit: 20,
+      limit: 0,
       movielist:[],
       modalShow: false,
+      pickmovie: 0,
+      moviesforuser:null,
+      movieidforuser: []
     }
   },
   methods: {
@@ -82,12 +89,15 @@ export default {
     },
     getMovie($state) {
       const config = this.setToken()
-      axios.get(`${SERVER_URL}/moviedata/`+(this.limit), config)
+      axios.get(`${SERVER_URL}/moviedata/`, config)
         .then((res) => {
           setTimeout(() => {
             if (res.data.length) {
-              // this.limit += 10
+              this.limit += 1
               this.moviedatas.push.apply(this.moviedatas, res.data);
+              console.log(this.moviedatas)
+              this.moviedatas.push(this.moviesforuser[this.limit])
+              console.log(this.moviedatas)
               $state.loaded();
               if (this.jobs.length / 10) {
                 $state.complete();
@@ -110,10 +120,44 @@ export default {
         this.moviedata = moviedata
         console.log(this.moviedata)
     },
+    getProfile() {
+      const config = this.setToken()
+      console.log(config)
+      axios.get(`http://127.0.0.1:8000/moviedata/profile/${this.username}/`, config)
+        .then(res => {
+          // console.log(res.data)
+          this.pickmovie = res.data
+          axios.get(`https://api.themoviedb.org/3/movie/${this.pickmovie.movie_id}/recommendations?api_key=0a76d0b795d7b29081aedf5bd1a28297&language=ko-KR&page=1`)
+            .then(res => {
+              console.log("했다!")
+              console.log(res.data.results)
+              this.moviesforuser = res.data.results
+              this.moviesforuser.forEach(movieforuser => {
+                console.log(movieforuser)
+                this.movieidforuser.push(movieforuser.id)
+              }) 
+            })
+            .catch(err => {
+              console.log(err)
+            })
+        })
+        .catch(err => {
+          console.log(err)
+        })
 
+      console.log("계산해")
+      console.log(this.movieidforuser)
+      console.log("계산끝")
+    },
+  },
+  computed: {
+    ...mapState([
+      'username'
+    ]),
   },
   created() {
-    this.getMovie(`${SERVER_URL}/moviedata/`+(this.limit))
+    this.getProfile()
+    this.getMovie(`${SERVER_URL}/moviedata/`)
   }
 }
 

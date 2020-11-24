@@ -3,8 +3,9 @@
     <img class="rounded logo" 
     src="../assets/biglogo.png" 
     alt="안뇽" 
+    data-html= true
     style="white-space: pre-line;"
-    v-b-popover.hover="'이미지의 크기는 곧 평점을 의미합니다!. 혹시 흔들리는 이미지가 있다면? 아마 당신을 위한 영화가 될 것입니다.'"
+    v-b-popover.hover="'이미지의 크기는 곧 평점을 의미합니다. <br/> 혹시 흔들리는 이미지가 있다면? 아마 당신을 위한 영화가 될 것입니다.'"
     title="Moving 사용설명서"
     >
       <form class="width=20% border-warning">
