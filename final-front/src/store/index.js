@@ -6,13 +6,11 @@ import createPersistedState from 'vuex-persistedstate';
 
 Vue.use(Vuex)
 
-
-
 export default new Vuex.Store({
   state: {
     mymovieid:'',
     movie: '',
-    user: [],
+    username: '',
   },
   plugins: [
     createPersistedState()
@@ -34,13 +32,14 @@ export default new Vuex.Store({
     },
     ADD_USER: function(state,userName) {
       console.log("로그인 정보 왔따!")
-      state.user.push(userName)
+      state.username=userName
     },
-    EMPTY_USER: function(state) {
-      console.log("User bye")
-      state.user = []
+    // EMPTY_USER: function(state) {
+    //   console.log("User bye")
+   
+    //   console.log(state.username)
     
-    }
+    // }
   },
   actions: {
     nowMovie: function({commit}, movieData) {
@@ -59,10 +58,10 @@ export default new Vuex.Store({
       console.log("로그인 정보 왔어?")
       commit('ADD_USER', userName)
     },
-    emptyUser: function({commit}) {
-      console.log("User 비울까?")
-      commit('EMPTY_USER')
-    }
+    // emptyUser: function({commit}) {
+    //   console.log("User 비울까?")
+    //   commit('EMPTY_USER')
+    // }
     
   },
 })
