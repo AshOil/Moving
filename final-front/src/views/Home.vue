@@ -1,5 +1,6 @@
 <template>
   <div class="back">
+    <img class="rounded float-right mx=0 200" src="../assets/logo.png" alt="안뇽">
     <form class="box">
       <b-tabs content-class="mt-3" lazy >
         <b-tab title="Login">
@@ -12,7 +13,6 @@
       </b-tabs>
     </form>
   </div>
-
 </template>
 
 <script>
@@ -35,19 +35,17 @@ export default {
 </script>
 
 <style>
-.back {
+/* .back {
   background: url( "https://i.ytimg.com/vi/P0lUx_CDVgE/maxresdefault.jpg" );
   background-repeat: no-repeat;
   background-size: cover;
   height: 100vh;
-}
+} */
 .box {
     width: 25%;
     position: relative;
     top: 15%;
     
   }
-
-
 
 </style>

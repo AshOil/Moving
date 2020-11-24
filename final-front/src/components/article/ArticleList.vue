@@ -7,7 +7,7 @@
       :movieid="movieid"
     />
   <b-container fluid>
-    <b-row style="position:relative; overflow-y:auto; height:650px ">
+    <div style="position:relative; overflow-y:auto; height:300px">
         <Article
           v-for="article in articles" :key='article.id' 
           :article=article
@@ -15,7 +15,7 @@
           @delete-article = deleteArticle
           @update-article = updateArticle
         />
-    </b-row>
+    </div>
   </b-container>
     
     
