@@ -68,6 +68,7 @@ export default {
   background: rgb(69, 69, 71) ;
   border: none;
   width: 90%;
+  color: white;
   margin: 0 auto;
   height: 45px;
   margin-bottom: 10px;
