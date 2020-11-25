@@ -92,9 +92,11 @@ export default {
       this.user_list.push(this.username)
     },
     deleteArticle(articleId) {
-      this.articles = this.articles.filter(article => {
+      this.articles = this.articles.filter(article => { 
         return article.id !== articleId
       })
+      this.user_list.remove(this.username)
+      
     },
     updateArticle(article) {
       console.log(article)
@@ -124,6 +126,7 @@ export default {
     this.getArticles(),
     this.scoreAvg()
   },
+ 
 
 }
 </script>
