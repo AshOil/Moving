@@ -34,9 +34,11 @@
       <b-icon class="d-inline" style="color:#f0ad4e" @click="showComment" icon="sort-down-alt" v-b-tooltip.hover.topright="'댓글달기'"></b-icon>
     </span>
     <div v-if="commentState">
+      <div style="display: block">
       <CommentList 
         :movieid="movieid" 
         :article="article" />
+      </div>
     </div>
 </div> 
 </template>

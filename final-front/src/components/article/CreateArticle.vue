@@ -6,9 +6,6 @@
     </span>
     <label for="title"></label>
     <input style=" border: 2px solid #f0ad4e; border-radius: 4px; background-color: #14181b; color: white; center" type="text" @keypress.enter="createArticle" v-model="title" placeholder="한줄평">
-    
-    <b-icon icon="plus-circle-fill" v-b-tooltip.hover.topright="'plus'" @click="createArticle"></b-icon>
-  
   </div>
 </template>
 

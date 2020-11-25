@@ -1,5 +1,5 @@
 <template>
-  <div style="background: rgb(69, 69, 71); border-radius: 5px;">
+  <div style="background: rgb(69, 69, 71); border-radius: 5px; display: inline-block;width: 100%;">
     <div  style="margin: 10px;">
       <CreateComment 
         :movieid="movieid" 
@@ -7,6 +7,7 @@
         @create-comment-input = createdComment
       />
     </div>
+    <hr style="border: dashed 0.5px #f0ad4e;">
     <Comment
       v-for="comment in comments" :key='comment.id'
       :movieid="movieid" 
