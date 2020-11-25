@@ -1,8 +1,8 @@
 <template>
   <div>
     <div>
-      <b-card class="rounded-0" id="aaa" :img-src="`https://image.tmdb.org/t/p/original/${moviedata.backdrop_path}`" img-alt="Card image" img-top>
-      <b-card-text>
+      <b-card class="rounded-0 ourfont" id="aaa" :img-src="`https://image.tmdb.org/t/p/original/${moviedata.backdrop_path}`" img-alt="Card image" img-top>
+      <b-card-text >
         {{moviedata.title}}
       </b-card-text>
       </b-card>
@@ -33,5 +33,8 @@ p {
 }
 #aaa {
   margin: 0 !important;
+}
+.ourfont {
+  font-family: 'NEXON Lv1 Gothic OTF';
 }
 </style>
