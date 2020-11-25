@@ -1,14 +1,7 @@
 <template>
-<div>
-  <div v-if="!login">
-    <router-view />
-  </div>
-  <div v-else>
     <div id="app" style="background-color: #14181b">
       <router-view />
     </div>
-  </div>
-</div>
 </template>
 
 

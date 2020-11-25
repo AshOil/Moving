@@ -2,6 +2,9 @@
   <div>
     <div class="container">
       <div class=" w-100">
+        <div v-if="!moviesforuser">
+          <p style="color:yellow;"> 아직 평가된 영화가 없어요 <br> 처음이라면 좋아하는 영화를 먼저 평가해주세요! <br> 좋아할만한 영화를 추천해드릴게요!</p>
+        </div>
             <stack
               :column-min-width="150"
               :gutter-width="15"
@@ -13,8 +16,8 @@
                 :key="idx"
                 style="transition: transform 300ms"
               >
-                <div style="width=100% height=100%" v-if="moviedata.movie_id in movieidforuser">
-                  <img @click="clickImage(moviedata)" class="large veryhigh" :src="`https://image.tmdb.org/t/p/original/${moviedata.poster_path}`" alt="">
+                <div style="width=100% height=100%" v-if="movieidforuser.includes(moviedata.id)">
+                  <img @click="clickImage(moviedata)" class="veryhigh" :src="`https://image.tmdb.org/t/p/original/${moviedata.poster_path}`" alt="">
                 </div>
                 <div style="width=100% height=100%" v-else-if="moviedata.vote_average >= 8.5">
                   <img @click="clickImage(moviedata)" class="large" :src="`https://image.tmdb.org/t/p/original/${moviedata.poster_path}`" alt="">
@@ -93,11 +96,13 @@ export default {
         .then((res) => {
           setTimeout(() => {
             if (res.data.length) {
-              this.limit += 1
               this.moviedatas.push.apply(this.moviedatas, res.data);
-              console.log(this.moviedatas)
-              this.moviedatas.push(this.moviesforuser[this.limit])
-              console.log(this.moviedatas)
+              // console.log(this.moviedatas)
+              if (this.moviesforuser) {
+                this.moviedatas.push(this.moviesforuser[this.limit])
+                // console.log(this.moviedatas)
+              }
+              this.limit += 1
               $state.loaded();
               if (this.jobs.length / 10) {
                 $state.complete();
@@ -122,20 +127,23 @@ export default {
     },
     getProfile() {
       const config = this.setToken()
-      console.log(config)
+      // console.log(config)
       axios.get(`http://127.0.0.1:8000/moviedata/profile/${this.username}/`, config)
         .then(res => {
-          // console.log(res.data)
+          console.log("사용자 유저정보")
+          console.log(res.data)
           this.pickmovie = res.data
           axios.get(`https://api.themoviedb.org/3/movie/${this.pickmovie.movie_id}/recommendations?api_key=0a76d0b795d7b29081aedf5bd1a28297&language=ko-KR&page=1`)
             .then(res => {
-              console.log("했다!")
+              console.log("사용자가 좋아하는 영화 정보")
               console.log(res.data.results)
               this.moviesforuser = res.data.results
               this.moviesforuser.forEach(movieforuser => {
-                console.log(movieforuser)
+                // console.log(movieforuser)
                 this.movieidforuser.push(movieforuser.id)
               }) 
+              console.log("사용자가 좋아하는 영화 id정보")
+              console.log(this.movieidforuser)
             })
             .catch(err => {
               console.log(err)
@@ -205,6 +213,7 @@ img {
 .veryhigh {
   animation: shake 0.5s;
   animation-iteration-count: infinite;
+  border: solid yellow 2px;
 }
 
 @keyframes shake {

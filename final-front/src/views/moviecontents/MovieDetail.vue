@@ -4,7 +4,7 @@
     <div style="width: 1220px; margin: 0 auto ">
       <nav class="navbar navbar-expand-lg navbar-light" style=" height: 40px;margin: 10px;margin-bottom: 30px;">
         <router-link
-          to="/"
+          to="/main"
           class="navbar-brand"
           href="#"
           router-tag="a"
@@ -14,14 +14,14 @@
           </router-link
         >
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul class="navbar-nav mr-auto">
+          <ul class="navbar-nav mr-auto" >
             <li class="nav-item">
-              <router-link style="background-color: #14181b" to="/main" class="nav-link" router-tag="a"
+              <router-link style="background-color: #14181b; color: yellow;" to="/main" class="nav-link" router-tag="a"
                 >Main</router-link
               >
             </li>
             <li class="nav-item">
-              <router-link style="background-color: #14181b" to="/" class="nav-link" router-tag="a"
+              <router-link style="background-color: #14181b; color: yellow;" to="/" class="nav-link" router-tag="a"
                 @click.native="logout">Logout</router-link
               >
             </li>
