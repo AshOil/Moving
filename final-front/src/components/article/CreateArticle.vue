@@ -5,7 +5,7 @@
       <b-form-rating id="rating-inline" inline v-model="score" variant="warning" no-border=true style="background: #00000000;"></b-form-rating>
     </span>
     <label for="title"></label>
-    <input type="text" @keypress.enter="createArticle" v-model="title" placeholder="Write your Opinion about Movie">
+    <input type="text" @keypress.enter="createArticle" v-model="title" placeholder="한줄평">
     
     <b-icon icon="plus-circle-fill" v-b-tooltip.hover.topright="'plus'" @click="createArticle"></b-icon>
   
@@ -14,7 +14,7 @@
 
 <script>
 import axios from 'axios'
-
+import {mapState} from 'vuex'
 
 export default {
   name: 'CreateArticle',
@@ -22,7 +22,10 @@ export default {
   props: {
     movieid: {
       type : Number
-    }
+    },
+    user_list: {
+      type: Array
+    },
   },
   data() {
     return {
@@ -48,16 +51,22 @@ export default {
         score: this.score,
         movie_id: this.movieid
       }
-      console.log(articleItem)
-      axios.post(`http://127.0.0.1:8000/moviedata/${this.movieid}/articles/`, articleItem, config)
-        .then(res => {
-          // 반응형 변경!!
-          this.scoreAvg()
-          this.$emit('create-input', res.data)
-        })
-        .catch((err) => {
-          console.log(err)
-        })
+      if (this.user_list.includes(this.username)) {
+            alert('이미 작성한 사용자 입니다.')
+          }
+      else {
+        axios.post(`http://127.0.0.1:8000/moviedata/${this.movieid}/articles/`, articleItem, config)
+          .then(res => {
+            this.scoreAvg()
+            this.$emit('create-input', res.data)
+            this.title = ''
+            
+          })
+          .catch((err) => {
+            console.log(err)
+          })
+      }
+      
     },
     scoreAvg() {
       const config = this.setToken()
@@ -72,6 +81,11 @@ export default {
     }
     
   },
+  computed: {
+    ...mapState([
+      'username'
+    ]),
+  }, 
 }
 </script>
 

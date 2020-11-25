@@ -5,6 +5,7 @@
     <CreateArticle 
       @create-input = createdArticles
       :movieid="movieid"
+      :user_list="user_list"
       @avg = Avg
     />
   <b-container fluid>
@@ -25,7 +26,7 @@
 
 <script>
 import axios from 'axios'
-
+import {mapState} from 'vuex'
 import CreateArticle from '@/components/article/CreateArticle'
 import Article from '@/components/article/Article'
 
@@ -38,9 +39,7 @@ export default {
     vote_average: {
       type: Number
     },
-    // score_avg: {
-    //   type: Number
-    // }
+    
   },
   components: {
     CreateArticle,
@@ -52,6 +51,7 @@ export default {
       value: null,
       articles: [],
       avg: 0,
+      user_list: []
 
     }
   },
@@ -74,6 +74,13 @@ export default {
         console.log(res.data)
         this.articles = res.data
         this.scoreAvg()
+        console.log("유저데이터")
+        this.articles.forEach(article => {
+          this.user_list.push(article.user)
+        })
+        console.log(this.user_list)
+        
+        
       })
       .catch(err => {
         console.log(err)
@@ -82,6 +89,7 @@ export default {
     createdArticles(text) {
       console.log(text)
       this.articles.push(text)
+      this.user_list.push(this.username)
     },
     deleteArticle(articleId) {
       this.articles = this.articles.filter(article => {
@@ -107,6 +115,11 @@ export default {
     }
 
    },
+   computed: {
+    ...mapState([
+      'username'
+    ]),
+  },
   created() {
     this.getArticles(),
     this.scoreAvg()
