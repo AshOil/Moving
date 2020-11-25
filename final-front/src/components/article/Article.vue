@@ -30,13 +30,19 @@
     <span>
       <b-icon class="d-inline" v-if="!updateState" icon="pencil-fill" @click="changeUpdate" v-b-tooltip.hover.topright="'update'"></b-icon>
       <b-icon class="d-inline" icon="trash-fill" @click="deleteArticle" v-b-tooltip.hover.topright="'delete'"></b-icon>
-      <b-icon class="d-inline" @click="showComment" icon="sort-down-alt" v-b-tooltip.hover.topright="'Comments'"></b-icon>
-    </span>
-    <div v-if="commentState">
-      <CommentList 
+
+      <div>
+      <b-icon class="d-inline"  v-b-toggle.collapse icon="sort-down-alt" v-b-tooltip.hover.topright="'Comments'"></b-icon>
+      <b-collapse id="collapse" class="mt-2">
+        <b-card>
+        <CommentList 
         :movieid="movieid" 
         :article="article" />
-    </div>
+        </b-card>
+      </b-collapse>
+  </div>
+    </span>
+
 </div> 
 </template>
 

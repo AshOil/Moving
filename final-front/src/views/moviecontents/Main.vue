@@ -4,7 +4,7 @@
         <div style="width: 1220px; margin: 0 auto ">
           <nav class="navbar navbar-expand-lg navbar-light" style=" height: 40px;margin: 10px;margin-bottom: 30px;">
             <router-link
-              to="/"
+              to="/main"
               class="navbar-brand"
               href="#"
               router-tag="a"
