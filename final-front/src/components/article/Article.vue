@@ -32,7 +32,9 @@
       <b-icon class="d-inline" style="color:#f0ad4e" v-if="!updateState" icon="pencil" @click="changeUpdate" v-b-tooltip.hover.topright="'수정하기'"></b-icon>
       <b-icon class="d-inline" style="color:#f0ad4e" icon="trash-fill" @click="deleteArticle" v-b-tooltip.hover.topright="'삭제하기'"></b-icon>
       <b-icon class="d-inline" style="color:#f0ad4e" @click="showComment" icon="sort-down-alt" v-b-tooltip.hover.topright="'댓글달기'"></b-icon>
+      <p v-if="this.created_at != this.updated_at" style="color: white; font-size: xx-small;">수정됨</p>
     </span>
+    
     <div v-if="commentState">
       <div style="display: block">
       <CommentList 
@@ -68,6 +70,8 @@ export default {
       commentState: false,
       score: 0,
       title: '',
+      created_at: null,
+      updated_at: null,
     }
   },
   methods: {
@@ -91,9 +95,11 @@ export default {
 
     deleteArticle() {
       const config = this.setToken()
+      this.checkDelete()
       axios.delete(`http://127.0.0.1:8000/moviedata/${this.movieid}/articles/${this.article.id}/`,config)
         .then(res => {
           console.log(res)
+          
           this.$emit('delete-article',res.data.id)
         })
         .catch(err => {
@@ -117,9 +123,12 @@ export default {
           console.log(res.data)
           this.updateState = !this.updateState 
           console.log('가라ㅏ')
+          this.created_at = res.data.created_at
+          this.updated_at = res.data.updated_at
           this.article.title = this.title
           this.article.score = this.score
-          
+          // console.log(this.created_at)
+          // console.log(this.updated_at)   
         })
         .catch(err => {
           console.log(err)
@@ -129,9 +138,13 @@ export default {
   showComment() {
     this.commentState = !this.commentState
   },
-
-
-
+  checkDelete(){
+    if (confirm("정말 삭제하시겠습니까??") == true){    //확인
+      return;
+    }else{   //취소
+      document.form.submit(); 
+    }
+    }
   },
   computed: {
     ...mapState([

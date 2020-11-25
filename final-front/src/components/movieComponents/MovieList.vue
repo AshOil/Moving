@@ -34,8 +34,8 @@
               </stack-item>
             </stack>
             <infinite-loading @infinite="getMovie" spinner="spiral"></infinite-loading>
-            <b-modal v-model="modalShow" hide-footer title= "오늘의 추천 영화!">
-              <div class="d-block text-center" @click="goToDetail">
+            <b-modal v-model="modalShow" class="ourfont" hide-footer title= "오늘의 추천 영화!">
+              <div class="d-block text-center " @click="goToDetail">
                 <OverlayContent 
                 fixed
                 :moviedata = moviedata
@@ -218,6 +218,9 @@ img {
   animation: shake 0.5s;
   animation-iteration-count: infinite;
 
+}
+.ourfont {
+  font-family: 'NEXON Lv1 Gothic OTF';
 }
 
 @keyframes shake {
