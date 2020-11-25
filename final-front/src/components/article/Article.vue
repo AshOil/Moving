@@ -15,34 +15,29 @@
     <input type="text" @keypress.enter="updateArticle" v-model="title" >
     <b-icon icon="pencil-fill" v-b-tooltip.hover.topright="'update'" @click="updateArticle"></b-icon>
   </div>
-
   <div v-else>
-    <b-form-rating 
-      id="rating-inline" 
-      no-border=true
-      style="background: #00000000;"
-      inline
-      variant="warning"
-      :value="article.score"
-      readonly
-    ></b-form-rating>
-    <span class="d-inline" >{{article.user}}님의 한줄평:         {{article.title}}   </span>
-    <span>
-      <b-icon class="d-inline" v-if="!updateState" icon="pencil-fill" @click="changeUpdate" v-b-tooltip.hover.topright="'update'"></b-icon>
-      <b-icon class="d-inline" icon="trash-fill" @click="deleteArticle" v-b-tooltip.hover.topright="'delete'"></b-icon>
-
-      <div>
-      <b-icon class="d-inline"  v-b-toggle.collapse icon="sort-down-alt" v-b-tooltip.hover.topright="'Comments'"></b-icon>
-      <b-collapse id="collapse" class="mt-2">
-        <b-card>
-        <CommentList 
+    <div style="text-align: left;display: inline-block;float: left;">
+      <b-form-rating 
+        id="rating-inline" 
+        no-border=true
+        style="background: #00000000;"
+        inline
+        variant="warning"
+        :value="article.score"
+        readonly
+      ></b-form-rating>
+      <span class="d-inline" style="color: white">{{article.user}}님의 한줄평:         {{article.title}}   </span>
+    </div>
+    <span style="float: right;text-align: right;margin: 10px;">
+      <b-icon class="d-inline" style="color:#f0ad4e" v-if="!updateState" icon="pencil" @click="changeUpdate" v-b-tooltip.hover.topright="'수정하기'"></b-icon>
+      <b-icon class="d-inline" style="color:#f0ad4e" icon="trash-fill" @click="deleteArticle" v-b-tooltip.hover.topright="'삭제하기'"></b-icon>
+      <b-icon class="d-inline" style="color:#f0ad4e" @click="showComment" icon="sort-down-alt" v-b-tooltip.hover.topright="'댓글달기'"></b-icon>
+    </span>
+    <div v-if="commentState">
+      <CommentList 
         :movieid="movieid" 
         :article="article" />
-        </b-card>
-      </b-collapse>
-  </div>
-    </span>
-
+    </div>
 </div> 
 </template>
 

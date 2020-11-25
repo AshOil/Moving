@@ -1,13 +1,14 @@
 <template>
   <div>
-    <span>사용자 평점: {{this.avg}}/5  전문가 평점: {{vote_average/2}}/5</span>
-    <hr>
+    <span style="color: #f0ad4e;">사용자 평점: {{this.avg}}/5  전문가 평점: {{vote_average/2}}/5</span>
+    <hr style="border: solid 1px #f0ad4e;">
     <CreateArticle 
       @create-input = createdArticles
       :movieid="movieid"
       :user_list="user_list"
       @avg = Avg
     />
+  <hr style="border: solid 1px #f0ad4e;">
   <b-container fluid>
     <div style="position:relative; overflow-y:auto; height:300px">
         <Article

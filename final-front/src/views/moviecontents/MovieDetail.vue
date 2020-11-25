@@ -16,12 +16,12 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav mr-auto" >
             <li class="nav-item">
-              <router-link style="background-color: #14181b; color: yellow;" to="/main" class="nav-link" router-tag="a"
+              <router-link style="background-color: #14181b; color: #f0ad4e;" to="/main" class="nav-link" router-tag="a"
                 >Main</router-link
               >
             </li>
             <li class="nav-item">
-              <router-link style="background-color: #14181b; color: yellow;" to="/" class="nav-link" router-tag="a"
+              <router-link style="background-color: #14181b; color: #f0ad4e;" to="/" class="nav-link" router-tag="a"
                 @click.native="logout">Logout</router-link
               >
             </li>
@@ -47,7 +47,7 @@
           <div id="content">
           <h1 class="m-3"> {{moviedata.title}}</h1>
           <hr>
-          <p class="text-align:left ">{{moviedata.overview}}</p>
+          <p class="text-align:left; font-family: 'GmarketSansMedium';">{{moviedata.overview}}</p>
           <span>
             장르 : {{detaildata.genres[0].name}} |
             개봉일 : {{detaildata.release_date}}  |
@@ -61,7 +61,8 @@
       <b-card class="rounded-lg border border-warning m-3" style="background-color: #14181b">
         <b-card-text >
           <hr>
-          <p class="font-weight-bold h4 m-3" style="color:yellow">영화 트레일러</p>
+          <p class="font-weight-bold h4 m-3" style="color: #f0ad4e;">영화 트레일러</p>
+          <hr>
           <youtube fitParent=True :video-id="videoId" ref="youtube" @playing="playing"></youtube>
           <br>
           <hr style="color:yellow">
@@ -198,6 +199,8 @@ clear: left;
   max-width: 800px; 
   margin: 0 auto;  */
 }
+
+input::placeholder { align-self: center; }
 
 #content {
   position: absolute; /* Position the background text */

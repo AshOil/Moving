@@ -1,11 +1,11 @@
 <template>
   <div>
     <span>
-      <label for="rating-inline" style="margin-right: 10px">Score: </label>
+      <label for="rating-inline" style="margin-right: 10px; color: #f0ad4e;">Score: </label>
       <b-form-rating id="rating-inline" inline v-model="score" variant="warning" no-border=true style="background: #00000000;"></b-form-rating>
     </span>
     <label for="title"></label>
-    <input type="text" @keypress.enter="createArticle" v-model="title" placeholder="한줄평">
+    <input style=" border: 2px solid #f0ad4e; border-radius: 4px; background-color: #14181b; color: white; center" type="text" @keypress.enter="createArticle" v-model="title" placeholder="한줄평">
     
     <b-icon icon="plus-circle-fill" v-b-tooltip.hover.topright="'plus'" @click="createArticle"></b-icon>
   

@@ -3,7 +3,7 @@
     <div class="container">
       <div class=" w-100">
         <div v-if="!moviesforuser">
-          <p style="color:yellow;"> 아직 평가된 영화가 없어요 <br> 처음이라면 좋아하는 영화를 먼저 평가해주세요! <br> 좋아할만한 영화를 추천해드릴게요!</p>
+          <p style="color:#f0ad4e;"> 아직 평가된 영화가 없어요 <br> 처음이라면 좋아하는 영화를 먼저 평가해주세요! <br> 좋아할만한 영화를 추천해드릴게요!</p>
         </div>
             <stack
               :column-min-width="150"
@@ -128,6 +128,8 @@ export default {
     getProfile() {
       const config = this.setToken()
       // console.log(config)
+      
+     
       axios.get(`http://127.0.0.1:8000/moviedata/profile/${this.username}/`, config)
         .then(res => {
           console.log("사용자 유저정보")
@@ -144,6 +146,12 @@ export default {
               }) 
               console.log("사용자가 좋아하는 영화 id정보")
               console.log(this.movieidforuser)
+              const my_url = `https://api.themoviedb.org/3/movie/${this.pickmovie.movie_id}/recommendations?api_key=0a76d0b795d7b29081aedf5bd1a28297&language=ko-KR&page=1`
+              axios.get(`http://127.0.0.1:8000/moviedata/getMovie/`, my_url)
+                .then(res => {
+                  console.log("추가했다")
+                  console.log(res.data)
+                })
             })
             .catch(err => {
               console.log(err)
@@ -187,19 +195,15 @@ img {
 }
 .verysmall { 
   height: 8rem;
-  border: solid red 2px;
 }
 .small { 
   height: 12rem;
-  border: solid gray 2px;
 }
 .medium { 
   height: 16rem;
-  border: solid gray 2px;
 }
 .large { 
   height: 25rem;
-  border: solid yellow 2px;
 }
 .centerplz {
   position: fixed !important;
@@ -213,7 +217,7 @@ img {
 .veryhigh {
   animation: shake 0.5s;
   animation-iteration-count: infinite;
-  border: solid yellow 2px;
+
 }
 
 @keyframes shake {
