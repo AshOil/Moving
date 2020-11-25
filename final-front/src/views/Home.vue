@@ -3,11 +3,9 @@
     <div class="header">
       <img class="logo" 
       src="../assets/biglogo.png" 
-      v-b-toggle.hover.sidebar-1
-      id="sidebar-1"
-      
+      v-b-toggle.sidebar-1     
       >
-      <b-sidebar id="sidebar-1" target="popover-sidebar-1" triggers="hover" title="Moving 사용설명서"  :backdrop-variant="variant"
+      <b-sidebar id="sidebar-1" target="popover-sidebar-1" title="Moving 사용설명서"  :backdrop-variant="variant"
       backdrop
       shadow style="text-align:left background-color:rgba(78, 78, 78, 0.3)">
         <div >
@@ -47,18 +45,13 @@
     </div>
       <div class="content">
         <form>
-       
           <div v-if="is_signpage">
             <Signup/>
-            <p class="text">
-              <a href="#" @click="changeIsSingpage">Go to Login</a>
-            </p>
+            <p class="text" @click="changeIsSingpage" style="color:white">Go to Login</p>
           </div>
           <div v-else>
             <Login/>
-            <p class="text">
-              <a href="#" @click="changeIsSingpage">Go to Signup</a>
-            </p>
+            <p class="text" @click="changeIsSingpage" style="color:white">Go to Signup</p>
           </div>
       </form>
     </div>

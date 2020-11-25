@@ -2,7 +2,7 @@
   <div>
     <h2 style="text-align: left; color: white; margin: 0 0 20px 16px;">회원가입</h2>
     <label for="username"></label>
-    <input type="email" id="username" v-model="credentials.username" class="form-control newinput" placeholder="Your email"  style="margin: 0 auto"/>
+    <input type="email" id="username" v-model="credentials.username" class="form-control newinput" placeholder="Your ID"  style="margin: 0 auto"/>
     <label for="password"></label>
     <input type="password" id="password" v-model="credentials.password" class="form-control newinput" placeholder="Your password"  style="margin: 0 auto"/>
     <label for="passwordConfirmation"></label>

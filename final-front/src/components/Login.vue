@@ -2,7 +2,7 @@
   <div class="">
     <h2 style="text-align: left; color: white; margin: 0 0 20px 16px;">로그인</h2>
     <label for="username"></label>
-    <input type="text" id="username" v-model="credentials.username" placeholder="Your email" class="form-control newinput" >
+    <input type="text" id="username" v-model="credentials.username" placeholder="Your ID" class="form-control newinput" >
     <label for="password"></label>
     <input type="password" id="password" v-model="credentials.password" @keypress.enter="login(credentials)" placeholder="Your password" class="form-control newinput">
     <b-button @click="login(credentials)" class="button_color" >LogIn</b-button>

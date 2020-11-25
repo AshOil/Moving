@@ -67,7 +67,7 @@
           <br>
           <hr style="color:yellow">
           <br>
-          <b-button v-b-toggle.sidebar-border style="b">관련 영화 찾아보기</b-button>
+          <b-button v-b-toggle.sidebar-border style="color:yellow">관련 영화 찾아보기</b-button>
           <b-sidebar class="text-warning" width=25% id="sidebar-border"  title="관련영화"  shadow>
             <div style="background-color: #14181b" class="text-warning">
               <MovieSpin 
