@@ -1,8 +1,10 @@
 <template>
-  <div>
-    {{comment.content}}
-    <b-icon class="d-inline" @click="deleteComment" icon="trash2-fill" v-b-tooltip.hover.topright="'comment delete'"></b-icon>
+<div style="margin: 10px;" >
+  <div style="color:white" >
+    {{comment.user}} : {{comment.content}}
+    <b-icon class="d-inline" style="color:#f0ad4e" @click="deleteComment" icon="trash2-fill" v-b-tooltip.hover.topright="'comment delete'"></b-icon>
   </div>
+</div>
 </template>
 
 <script>

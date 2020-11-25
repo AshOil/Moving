@@ -1,10 +1,12 @@
 <template>
-  <div>
-    <CreateComment 
-      :movieid="movieid" 
-      :article="article" 
-      @create-comment-input = createdComment
-    />
+  <div style="background: rgb(69, 69, 71); border-radius: 5px;">
+    <div  style="margin: 10px;">
+      <CreateComment 
+        :movieid="movieid" 
+        :article="article" 
+        @create-comment-input = createdComment
+      />
+    </div>
     <Comment
       v-for="comment in comments" :key='comment.id'
       :movieid="movieid" 

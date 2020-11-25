@@ -1,8 +1,8 @@
 <template>
   <div>
     <span>
-      <b-icon class="d-inline" icon="chat-left-text-fill"></b-icon>
-      <input type="text" v-model="content" placeholder="댓글써라" @keypress.enter="createComment">
+      <b-icon  style="color:#f0ad4e" class="d-inline" icon="chat-left-text-fill"></b-icon>   
+      <input style=" border: 2px solid #f0ad4e; border-radius: 4px; background-color: #14181b; color: white; center" type="text" v-model="content" placeholder="댓글 작성하기" @keypress.enter="createComment">
     </span>
   </div>
 </template>
@@ -47,6 +47,7 @@ export default {
         .then(res => {
           // 반응형 변경!!
           this.$emit('create-comment-input', res.data)
+          this.content=""
         })
         .catch((err) => {
           console.log(err)

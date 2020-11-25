@@ -8,7 +8,9 @@ import router from './router'
 import { BootstrapVue, BootstrapVueIcons } from 'bootstrap-vue'
 import { ModalPlugin } from 'bootstrap-vue'
 import VueYoutube from 'vue-youtube'
- 
+import VueAutosuggest from "vue-autosuggest";
+
+Vue.use(VueAutosuggest)
 Vue.use(VueYoutube)
 Vue.use(ModalPlugin)
 Vue.use(BootstrapVue)

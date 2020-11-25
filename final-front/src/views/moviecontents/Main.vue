@@ -16,12 +16,12 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
               <ul class="navbar-nav mr-auto">
                 <li class="nav-item">
-                  <router-link style="background-color: #14181b" to="/main" class="nav-link" router-tag="a"
+                  <router-link style="background-color: #14181b; color:#f0ad4e" to="/main" class="nav-link" router-tag="a"
                     >Main</router-link
                   >
                 </li>
                 <li class="nav-item">
-                  <router-link style="background-color: #14181b" to="/" class="nav-link" router-tag="a"
+                  <router-link style="background-color: #14181b; color:#f0ad4e" to="/" class="nav-link" router-tag="a"
                     @click.native="logout">Logout</router-link
                   >
                 </li>

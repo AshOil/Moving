@@ -19,7 +19,11 @@ export default new Vuex.Store({
     NOW_MOVIE: function(state, movieData) {
       console.log("되나보네")
       state.movie= movieData
-      state.mymovieid=movieData.movie_id
+      if (movieData.movie_id) {
+        state.mymovieid=movieData.movie_id
+      } else {
+        state.mymovieid=movieData.id
+      }
     },
     SUGGEST_MOVIE: function(state, movieData) {
       console.log("되나보네")
