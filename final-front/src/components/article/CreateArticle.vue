@@ -27,7 +27,8 @@ export default {
   data() {
     return {
       title: '',
-      score: 0
+      score: 0,
+      score_avg2: 0,
     }
   },
   methods: {
@@ -50,16 +51,27 @@ export default {
       console.log(articleItem)
       axios.post(`http://127.0.0.1:8000/moviedata/${this.movieid}/articles/`, articleItem, config)
         .then(res => {
-          
           // 반응형 변경!!
+          this.scoreAvg()
           this.$emit('create-input', res.data)
         })
         .catch((err) => {
           console.log(err)
         })
-
+    },
+    scoreAvg() {
+      const config = this.setToken()
+      axios.get(`http://127.0.0.1:8000/moviedata/${this.movieid}/score/`,config)
+      .then(res => {
+        this.score_avg2 = res.data.avg_score
+        this.$emit('avg', this.score_avg2)
+      })
+      .catch(err => {
+        console.log(err)
+      })
     }
-  }
+    
+  },
 }
 </script>
 

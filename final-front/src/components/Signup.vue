@@ -1,15 +1,15 @@
 <template>
   <div>
-    <h1>Sign Up</h1>
+    <h2 style="text-align: left; color: white; margin: 0 0 20px 16px;">회원가입</h2>
     <label for="username"></label>
-    <input type="email" id="username" v-model="credentials.username" class="form-control" placeholder="Your email" />
+    <input type="email" id="username" v-model="credentials.username" class="form-control newinput" placeholder="Your email"  style="margin: 0 auto"/>
     <label for="password"></label>
-    <input type="password" id="password" v-model="credentials.password" class="form-control" placeholder="Your password"/>
+    <input type="password" id="password" v-model="credentials.password" class="form-control newinput" placeholder="Your password"  style="margin: 0 auto"/>
     <label for="passwordConfirmation"></label>
     <input type="password" id="passwordConfirmation" v-model="credentials.passwordConfirmation" 
-    @keypress.enter="signup(credentials)" class="form-control" placeholder="Check your password one more"/>
+    @keypress.enter="signup(credentials)" class="form-control newinput" placeholder="Check your password one more"  style="margin: 0 auto"/>
     <br>
-    <b-button @click="signup(credentials)">Sign-Up</b-button>
+    <b-button @click="signup(credentials)" class="button_color" style="margin: 10px">Sign-Up</b-button>
   </div>
 </template>
 
@@ -64,6 +64,35 @@ export default {
     top: 15rem;
     
   }
+.newinput{
+  background: rgb(69, 69, 71) ;
+  border: none;
+  width: 90%;
+  margin: 0 auto;
+  height: 45px;
+  margin-bottom: 10px;
+}
+.newinput:focus {
+  background: rgb(74, 75, 77);
+  color: white;
+}
+
+.button_color{
+  width: 90%;
+  background: #FFD938;
+  height: 45px;
+  color: rgb(22, 25, 29);
+  font-weight: 600;
+}
+
+.reduced {
+  margin-top: 10px
+}
+
+.button_color:hover {
+  background: rgb(22, 25, 29);
+  color: #FFD938;
+}
 
 
 

@@ -89,6 +89,7 @@
         <ArticleList 
           :movieid = mymovieid
           :vote_average = moviedata.vote_average
+          
         />
       </b-card>
     </b-card-group>
@@ -109,7 +110,7 @@ export default {
       moviedata: this.movie,
       detaildata:null,
       videoId: '',
-      slidemovie: null
+      slidemovie: null,
     }
   },
   methods: {
@@ -150,16 +151,7 @@ export default {
       // console.log(this.movie)
       this.$router.go(this.$router.currentRoute)
     },
-    scoreAvg() {
-      const config = this.setToken()
-      axios.get(`http://127.0.0.1:8000/moviedata/${this.mymovieid}/score/`,config)
-      .then(res => {
-        console.log(res.data)  
-      })
-      .catch(err => {
-        console.log(err)
-      })
-    }
+    
   },
   components: {
     ArticleList,
@@ -185,7 +177,6 @@ export default {
     this.getMovie()
     this.getVideo()
     // console.log(this.movie)
-    this.scoreAvg()
   },
 
 }

@@ -1,27 +1,30 @@
 <template>
-  <div class="back">
-    <img class="rounded logo" 
+  <div class="auth-container">
+    <div class="header">
+    <img class="logo" 
     src="../assets/biglogo.png" 
-    alt="안뇽" 
     data-html= true
-    style="white-space: pre-line;"
     v-b-popover.hover="'이미지의 크기는 곧 평점을 의미합니다. <br/> 혹시 흔들리는 이미지가 있다면? 아마 당신을 위한 영화가 될 것입니다.'"
     title="Moving 사용설명서"
     >
-      <form class="width=20% border-warning">
-        <div style="border: solid 2px yellow" class="m-3">
-          <b-tabs class="mx-auto"   lazy >
-            <b-tab title="Login">
-              <br>
-              <Login />
-            </b-tab>
-            <b-tab title="Sign Up">
-              <br>
-              <Signup/>
-            </b-tab>
-          </b-tabs>
-        </div>
+    </div>
+      <div class="content">
+        <form>
+       
+          <div v-if="is_signpage">
+            <Signup/>
+            <p class="text">
+              <a href="#" @click="changeIsSingpage">Go to Login</a>
+            </p>
+          </div>
+          <div v-else>
+            <Login/>
+            <p class="text">
+              <a href="#" @click="changeIsSingpage">Go to Signup</a>
+            </p>
+          </div>
       </form>
+    </div>
   </div>
 </template>
 
@@ -33,38 +36,59 @@ export default {
   name: 'Home',
   data() {
     return {
-      check: false
+      check: false,
+      is_signpage: false,
     }
   }, 
   components: {
     Signup,
     Login
   },
+  methods: {
+    changeIsSingpage() {
+      this.is_signpage = !this.is_signpage
+    }
+  }
 
 }
 </script>
 
 <style>
-.back {
-  display: block;
-  border: yellow;
-  border-color: yellow;
-  text-align: center;
+.auth-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.header {
+  width: 400px;
+}
+
+.content {
+  min-width: 500px;
+  background: rgba(78, 78, 78, 0.3);
+  padding: 30px 20px 30px 20px;
+  margin-top: -40px;
+  border-radius: 10px;
+}
+
+form {
 
 }
-form {
-  border-style: solid;
-  border-width: medium;
-  width: 30%;
-  text-align: center;
-  margin: auto;
-  border: yellow;
-  border: 2px;
-}
 .logo {
-  width: 400px;
-  height: auto;
-  text-align: center;
+  width: 100%;
+}
+.text{
+  margin: 20px;
+}
+.text a{
+  color: white;
+}
+.box{
+  min-width: 350px;
+  height: 500px
+
 }
 
 </style>

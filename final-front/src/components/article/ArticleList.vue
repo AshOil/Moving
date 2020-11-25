@@ -1,10 +1,11 @@
 <template>
   <div>
-    <span>사용자 평점: 나중에넣기   전문가 평점: {{vote_average/2}}/5</span>
+    <span>사용자 평점: {{this.avg}}/5  전문가 평점: {{vote_average/2}}/5</span>
     <hr>
     <CreateArticle 
       @create-input = createdArticles
       :movieid="movieid"
+      @avg = Avg
     />
   <b-container fluid>
     <div style="position:relative; overflow-y:auto; height:300px">
@@ -36,7 +37,10 @@ export default {
     },
     vote_average: {
       type: Number
-    }
+    },
+    // score_avg: {
+    //   type: Number
+    // }
   },
   components: {
     CreateArticle,
@@ -46,7 +50,9 @@ export default {
   data() {
     return {
       value: null,
-      articles: []
+      articles: [],
+      avg: 0,
+
     }
   },
   methods: {
@@ -67,6 +73,7 @@ export default {
       .then(res => {
         console.log(res.data)
         this.articles = res.data
+        this.scoreAvg()
       })
       .catch(err => {
         console.log(err)
@@ -83,11 +90,26 @@ export default {
     },
     updateArticle(article) {
       console.log(article)
+    },
+    scoreAvg() {
+      const config = this.setToken()
+      axios.get(`http://127.0.0.1:8000/moviedata/${this.movieid}/score/`,config)
+      .then(res => {
+        this.avg = res.data.avg_score
+      })
+      .catch(err => {
+        console.log(err)
+      })
+    },
+    Avg(avg) {
+      console.log(avg)
+      this.avg = avg
     }
 
    },
   created() {
-    this.getArticles()
+    this.getArticles(),
+    this.scoreAvg()
   },
 
 }
