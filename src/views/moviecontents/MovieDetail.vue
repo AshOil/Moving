@@ -150,7 +150,7 @@ export default {
       // console.log(this.slidemovie)
       this.$store.dispatch('suggestMovie', this.slidemovie)
       // console.log(this.movie)
-      this.$router.go(this.$router.currentRoute)
+      this.$router.go(0)
     },
     
   },
