@@ -98,7 +98,7 @@ export default {
       this.checkDelete()
       axios.delete(`https://ssafyingmoving.herokuapp.com/moviedata/${this.movieid}/articles/${this.article.id}/`,config)
         .then(res => {
-          console.log(res)
+          // console.log(res)
           
           this.$emit('delete-article',res.data.id)
         })
@@ -120,9 +120,9 @@ export default {
       console.log(articleItem)
       axios.put(`https://ssafyingmoving.herokuapp.com/moviedata/${this.movieid}/articles/${this.article.id}/`, articleItem, config)
         .then(res => {
-          console.log(res.data)
+          // console.log(res.data)
           this.updateState = !this.updateState 
-          console.log('가라ㅏ')
+          // console.log('가라ㅏ')
           this.created_at = res.data.created_at
           this.updated_at = res.data.updated_at
           this.article.title = this.title

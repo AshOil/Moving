@@ -58,9 +58,9 @@ export default {
     getMovie() {
       axios.get(`https://api.themoviedb.org/3/movie/${this.movieid}/similar?api_key=0a76d0b795d7b29081aedf5bd1a28297&language=ko-Kr&page=1`)
         .then(res => {
-          console.log("시작")
-          console.log(res.data.results)
-          console.log("시작")
+          // console.log("시작")
+          // console.log(res.data.results)
+          // console.log("시작")
           this.moviesuggests = res.data.results
         })
     },
@@ -80,12 +80,12 @@ export default {
       // console.log(this.moviesuggests[this.slide])
     },
     clickCheck() {
-      console.log('되나?')
+      // console.log('되나?')
     },  
   },
   created() {
-    console.log("생성")
-    console.log(this.moviedata)
+    // console.log("생성")
+    // console.log(this.moviedata)
     this.idx=this.movieid
     this.getMovie()
   }

@@ -123,7 +123,7 @@ export default {
     clickImage(moviedata) {
         this.modalShow = !this.modalShow
         this.moviedata = moviedata
-        console.log(this.moviedata)
+        // console.log(this.moviedata)
     },
     getProfile() {
       const config = this.setToken()
@@ -132,24 +132,24 @@ export default {
      
       axios.get(`https://ssafyingmoving.herokuapp.com/moviedata/profile/${this.username}/`, config)
         .then(res => {
-          console.log("사용자 유저정보")
-          console.log(res.data)
+          // console.log("사용자 유저정보")
+          // console.log(res.data)
           this.pickmovie = res.data
           axios.get(`https://api.themoviedb.org/3/movie/${this.pickmovie.movie_id}/recommendations?api_key=0a76d0b795d7b29081aedf5bd1a28297&language=ko-KR&page=1`)
             .then(res => {
-              console.log("사용자가 좋아하는 영화 정보")
-              console.log(res.data.results)
+              // console.log("사용자가 좋아하는 영화 정보")
+              // console.log(res.data.results)
               this.moviesforuser = res.data.results
               this.moviesforuser.forEach(movieforuser => {
                 // console.log(movieforuser)
                 this.movieidforuser.push(movieforuser.id)
               }) 
-              console.log("사용자가 좋아하는 영화 id정보")
-              console.log(this.movieidforuser)
+              // console.log("사용자가 좋아하는 영화 id정보")
+              // console.log(this.movieidforuser)
               const my_url = `https://api.themoviedb.org/3/movie/${this.pickmovie.movie_id}/recommendations?api_key=0a76d0b795d7b29081aedf5bd1a28297&language=ko-KR&page=1`
               axios.get(`https://ssafyingmoving.herokuapp.com/moviedata/getMovie/`, my_url)
                 .then(res => {
-                  console.log("추가했다")
+                  // console.log("추가했다")
                   console.log(res.data)
                 })
             })
@@ -161,9 +161,9 @@ export default {
           console.log(err)
         })
 
-      console.log("계산해")
-      console.log(this.movieidforuser)
-      console.log("계산끝")
+      // console.log("계산해")
+      // console.log(this.movieidforuser)
+      // console.log("계산끝")
     },
   },
   computed: {

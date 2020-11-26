@@ -26,7 +26,7 @@ export default {
     login({ username, password }) {
       axios.post('https://ssafyingmoving.herokuapp.com/accounts/api-token-auth/', { username, password })
         .then(res => {
-          console.log(res.data)
+          // console.log(res.data)
           localStorage.setItem('jwt', res.data.token)
           this.$emit('login')
           this.$store.dispatch('addUser', this.credentials.username)

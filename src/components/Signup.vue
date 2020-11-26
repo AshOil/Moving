@@ -38,7 +38,7 @@ export default {
       if (password === passwordConfirmation) {
         axios.post('https://ssafyingmoving.herokuapp.com/accounts/signup/', userData)
           .then(() => {
-            console.log('회원가입')
+            // console.log('회원가입')
             // console.log('signup')
             // 회원가입 정상 진행(server)
             this.$router.go(this.$router.currentRoute)

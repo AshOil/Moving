@@ -72,14 +72,14 @@ export default {
       const config = this.setToken()
       axios.get(`https://ssafyingmoving.herokuapp.com/moviedata/${this.movieid}/articles/`,config)
       .then(res => {
-        console.log(res.data)
+        // console.log(res.data)
         this.articles = res.data
         this.scoreAvg()
-        console.log("유저데이터")
+        // console.log("유저데이터")
         this.articles.forEach(article => {
           this.user_list.push(article.user)
         })
-        console.log(this.user_list)
+        // console.log(this.user_list)
         
         
       })
@@ -88,7 +88,7 @@ export default {
       })
     },
     createdArticles(text) {
-      console.log(text)
+      // console.log(text)
       this.articles.push(text)
       this.user_list.push(this.username)
     },
@@ -100,7 +100,7 @@ export default {
       
     },
     updateArticle(article) {
-      console.log(article)
+      // console.log(article)
     },
     scoreAvg() {
       const config = this.setToken()
@@ -113,7 +113,7 @@ export default {
       })
     },
     Avg(avg) {
-      console.log(avg)
+      // console.log(avg)
       this.avg = avg
     }
 

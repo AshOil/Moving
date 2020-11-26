@@ -29,7 +29,7 @@ export default {
       console.log(config)
       axios.get(`https://ssafyingmoving.herokuapp.com/moviedata/profile/${this.username}/`, config)
       .then(res => {
-        console.log(res.data)
+        // console.log(res.data)
         this.pickmovie = res.data
       })
       .catch(err => {

@@ -15,7 +15,7 @@ export default {
   },
   methods: {
     logout() {
-      console.log('logout')
+      // console.log('logout')
       this.login =false
       this.$store.dispatch('emptyUser')
       localStorage.removeItem('jwt')
