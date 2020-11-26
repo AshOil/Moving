@@ -5,6 +5,7 @@ import Signup from '../components/Signup.vue'
 import Login from '../components/Login.vue'
 import Main from '../views/moviecontents/Main.vue'
 import MovieDetail from '../views/moviecontents/MovieDetail.vue'
+import MovieDetail2 from '../views/moviecontents/MovieDetail2.vue'
 import ArticleList from '../components/article/ArticleList'
 import Profile from '../views/Profile.vue'
 
@@ -31,6 +32,11 @@ const routes = [
     path:'/main',
     name: 'Main',
     component: Main
+  },
+  {
+    path:'/moviedetail2',
+    name: 'MovieDetail2',
+    component: MovieDetail2
   },
   {
     path:'/moviedetail',

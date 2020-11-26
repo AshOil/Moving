@@ -105,7 +105,7 @@ import {mapState} from 'vuex'
 import axios from 'axios'
 
 export default {
-  name: 'MovieDetail',
+  name: 'MovieDetail2',
   data() {
     return {
       moviedata: this.movie,
@@ -150,11 +150,10 @@ export default {
       // console.log(this.slidemovie)
       this.$store.dispatch('suggestMovie', this.slidemovie)
       // console.log(this.movie)
-      // console.log(this.$router.currentRoute.name)
-      if (this.$router.currentRoute.name === "MovieDetail") {
-        this.$router.push("MovieDetail2")
-      } else {
+      if (this.$router.currentRoute.name === "MovieDetail2") {
         this.$router.push("MovieDetail")
+      } else {
+        this.$router.push("MovieDetail2")
       }
     },
     
