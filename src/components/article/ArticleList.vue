@@ -100,7 +100,7 @@ export default {
       
     },
     updateArticle(article) {
-      // console.log(article)
+      console.log(article)
     },
     scoreAvg() {
       const config = this.setToken()
