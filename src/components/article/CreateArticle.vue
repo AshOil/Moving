@@ -52,7 +52,7 @@ export default {
             alert('이미 작성한 사용자 입니다.')
           }
       else {
-        axios.post(`http://127.0.0.1:8000/moviedata/${this.movieid}/articles/`, articleItem, config)
+        axios.post(`https://ssafyingmoving.herokuapp.com/moviedata/${this.movieid}/articles/`, articleItem, config)
           .then(res => {
             this.scoreAvg()
             this.$emit('create-input', res.data)
@@ -67,7 +67,7 @@ export default {
     },
     scoreAvg() {
       const config = this.setToken()
-      axios.get(`http://127.0.0.1:8000/moviedata/${this.movieid}/score/`,config)
+      axios.get(`https://ssafyingmoving.herokuapp.com/moviedata/${this.movieid}/score/`,config)
       .then(res => {
         this.score_avg2 = res.data.avg_score
         this.$emit('avg', this.score_avg2)

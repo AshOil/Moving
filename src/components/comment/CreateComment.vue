@@ -43,7 +43,7 @@ export default {
         article_id: this.article.id
       }
       console.log(commentItem)
-      axios.post(`http://127.0.0.1:8000/moviedata/${this.movieid}/articles/${this.article.id}/comments/`, commentItem, config)
+      axios.post(`https://ssafyingmoving.herokuapp.com/moviedata/${this.movieid}/articles/${this.article.id}/comments/`, commentItem, config)
         .then(res => {
           // 반응형 변경!!
           this.$emit('create-comment-input', res.data)

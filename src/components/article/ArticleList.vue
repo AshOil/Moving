@@ -70,7 +70,7 @@ export default {
       
       // Article List 가져와
       const config = this.setToken()
-      axios.get(`http://127.0.0.1:8000/moviedata/${this.movieid}/articles/`,config)
+      axios.get(`https://ssafyingmoving.herokuapp.com/moviedata/${this.movieid}/articles/`,config)
       .then(res => {
         console.log(res.data)
         this.articles = res.data
@@ -104,7 +104,7 @@ export default {
     },
     scoreAvg() {
       const config = this.setToken()
-      axios.get(`http://127.0.0.1:8000/moviedata/${this.movieid}/score/`,config)
+      axios.get(`https://ssafyingmoving.herokuapp.com/moviedata/${this.movieid}/score/`,config)
       .then(res => {
         this.avg = res.data.avg_score
       })

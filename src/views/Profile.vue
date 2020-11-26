@@ -27,7 +27,7 @@ export default {
     getProfile() {
       const config = this.setToken()
       console.log(config)
-      axios.get(`http://127.0.0.1:8000/moviedata/profile/${this.username}/`, config)
+      axios.get(`https://ssafyingmoving.herokuapp.com/moviedata/profile/${this.username}/`, config)
       .then(res => {
         console.log(res.data)
         this.pickmovie = res.data

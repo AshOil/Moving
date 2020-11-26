@@ -24,7 +24,7 @@ export default {
   },
   methods: {
     login({ username, password }) {
-      axios.post('http://127.0.0.1:8000/accounts/api-token-auth/', { username, password })
+      axios.post('https://ssafyingmoving.herokuapp.com/accounts/api-token-auth/', { username, password })
         .then(res => {
           console.log(res.data)
           localStorage.setItem('jwt', res.data.token)

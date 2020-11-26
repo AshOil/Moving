@@ -130,7 +130,7 @@ export default {
       // console.log(config)
       
      
-      axios.get(`http://127.0.0.1:8000/moviedata/profile/${this.username}/`, config)
+      axios.get(`https://ssafyingmoving.herokuapp.com/moviedata/profile/${this.username}/`, config)
         .then(res => {
           console.log("사용자 유저정보")
           console.log(res.data)
@@ -147,7 +147,7 @@ export default {
               console.log("사용자가 좋아하는 영화 id정보")
               console.log(this.movieidforuser)
               const my_url = `https://api.themoviedb.org/3/movie/${this.pickmovie.movie_id}/recommendations?api_key=0a76d0b795d7b29081aedf5bd1a28297&language=ko-KR&page=1`
-              axios.get(`http://127.0.0.1:8000/moviedata/getMovie/`, my_url)
+              axios.get(`https://ssafyingmoving.herokuapp.com/moviedata/getMovie/`, my_url)
                 .then(res => {
                   console.log("추가했다")
                   console.log(res.data)

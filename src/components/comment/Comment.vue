@@ -36,7 +36,7 @@ export default {
     },
     deleteComment() {
       const config = this.setToken()
-      axios.delete(`http://127.0.0.1:8000/moviedata/${this.movieid}/articles/${this.article.id}/comments/${this.comment.id}/`,config)
+      axios.delete(`https://ssafyingmoving.herokuapp.com/moviedata/${this.movieid}/articles/${this.article.id}/comments/${this.comment.id}/`,config)
         .then(res => {
           console.log(res.data)
           this.$emit('delete-comment',res.data.id)

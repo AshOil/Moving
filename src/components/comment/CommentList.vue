@@ -57,7 +57,7 @@ export default {
     getComments() {
       // Comment List 가져와
       const config = this.setToken()
-      axios.get(`http://127.0.0.1:8000/moviedata/${this.movieid}/articles/${this.article.id}/comments/`, config)
+      axios.get(`https://ssafyingmoving.herokuapp.com/moviedata/${this.movieid}/articles/${this.article.id}/comments/`, config)
       .then(res => {
         console.log(res.data)
         this.comments = res.data

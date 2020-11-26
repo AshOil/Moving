@@ -36,7 +36,7 @@ export default {
         passwordConfirmation,
       }
       if (password === passwordConfirmation) {
-        axios.post('http://127.0.0.1:8000/accounts/signup/', userData)
+        axios.post('https://ssafyingmoving.herokuapp.com/accounts/signup/', userData)
           .then(() => {
             console.log('회원가입')
             // console.log('signup')

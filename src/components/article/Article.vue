@@ -96,7 +96,7 @@ export default {
     deleteArticle() {
       const config = this.setToken()
       this.checkDelete()
-      axios.delete(`http://127.0.0.1:8000/moviedata/${this.movieid}/articles/${this.article.id}/`,config)
+      axios.delete(`https://ssafyingmoving.herokuapp.com/moviedata/${this.movieid}/articles/${this.article.id}/`,config)
         .then(res => {
           console.log(res)
           
@@ -118,7 +118,7 @@ export default {
       }
       
       console.log(articleItem)
-      axios.put(`http://127.0.0.1:8000/moviedata/${this.movieid}/articles/${this.article.id}/`, articleItem, config)
+      axios.put(`https://ssafyingmoving.herokuapp.com/moviedata/${this.movieid}/articles/${this.article.id}/`, articleItem, config)
         .then(res => {
           console.log(res.data)
           this.updateState = !this.updateState 
