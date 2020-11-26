@@ -25,10 +25,18 @@
                     @click.native="logout">Logout</router-link
                   >
                 </li>
-                <li class="nav-item">
-                  <a style="background-color: #14181b; color:#f0ad4e" class="nav-link" 
-                    @click="openNav()">Moving?</a>
-                </li>
+                <div v-if="this.nowopen">
+                  <li class="nav-item">
+                    <a style="background-color: #14181b; color:#f0ad4e" class="nav-link" 
+                      @click="closeNav()">Moving?</a>
+                  </li>
+                </div>
+                <div v-else>
+                  <li class="nav-item">
+                    <a style="background-color: #14181b; color:#f0ad4e" class="nav-link" 
+                      @click="openNav()">Moving?</a>
+                  </li>
+                </div>
               </ul>
             </div>
           </nav>
@@ -80,6 +88,11 @@ import MovieList from '../../components/movieComponents/MovieList.vue'
 
 export default {
   name: 'Main',
+  data() {
+    return {
+      nowopen: false
+    }
+  },
   components: {
     MovieList
   },
@@ -94,11 +107,13 @@ export default {
     openNav() {
       document.getElementById("mySidenav").style.width = "250px";
       document.getElementById("goleft").style.marginRight = "250px";
+      this.nowopen = true
       // document.body.style.backgroundColor = "rgba(0,0,0,0.4)";
     },
     closeNav() {
       document.getElementById("mySidenav").style.width = "0";
       document.getElementById("goleft").style.marginRight = "0";
+      this.nowopen = false
       // document.body.style.backgroundColor = "white";
     }
   },
